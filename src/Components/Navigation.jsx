@@ -2,6 +2,8 @@ import { Fragment } from "react"
 import { Menu, Transition } from "@headlessui/react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSortDown, faGlobe, faLanguage } from "@fortawesome/free-solid-svg-icons"
+import { Select, Option } from "@material-tailwind/react"
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
@@ -32,7 +34,7 @@ const Navigation = () => {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <Menu.Items className="absolute right-0 z-10 mt-2 w-fit origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
               <div className="py-1">
                 <Menu.Item className=" font-semibold">
                   {({ active }) => (
@@ -40,11 +42,11 @@ const Navigation = () => {
                       href="#"
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm"
+                        "block px-4 py-2 lg:text-sm text-[13px]"
                       )}
                     >
-                      Tiếng Việt
-                      <FontAwesomeIcon icon={faLanguage} className="ml-2 w-4" />
+                      <p className="text-[10px]">Tiếng Việt</p>
+                      <FontAwesomeIcon icon={faLanguage} className="ml-3 w-4" />
                     </a>
                   )}
                 </Menu.Item>
@@ -52,6 +54,21 @@ const Navigation = () => {
             </Menu.Items>
           </Transition>
         </Menu>
+        {/* <div className="w-72 border-2 text-white">
+          <Select
+            label="Select Version"
+            animate={{
+              mount: { y: 0 },
+              unmount: { y: 25 }
+            }}
+          >
+            <Option>Material Tailwind HTML</Option>
+            <Option>Material Tailwind React</Option>
+            <Option>Material Tailwind Vue</Option>
+            <Option>Material Tailwind Angular</Option>
+            <Option>Material Tailwind Svelte</Option>
+          </Select>
+        </div> */}
 
         <button className="text-white bg-bgrbtsignin font-semibold lg:px-5 md:px-4 sm:px-3 px-2 rounded-md">
           Sign in

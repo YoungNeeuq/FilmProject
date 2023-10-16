@@ -16,13 +16,17 @@ export default {
       fontSize: {
         home: "5rem",
         text: "22px",
-        textt: "40px"
+        textt: "40px",
+        banner: "64px"
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"]
       },
       borderColor: {
         1: "1px"
+      },
+      lineHeight: {
+        banner: "1"
       }
     },
     root: {
