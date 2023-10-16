@@ -6,10 +6,24 @@ export default {
       colors: {
         bgrbtsignin: "#FF2C78",
         llogo1: "#FF2C78",
-        llogo2: "#DCA4FF"
+        llogo2: "#DCA4FF",
+        banner1: "#020510",
+        banner2: "#1a1933"
       },
       height: {
         h: "92%"
+      },
+      fontSize: {
+        home: "5rem",
+        text: "22px",
+        textt: "40px",
+        banner: "64px"
+      },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"]
+      },
+      borderColor: {
+        1: "1px"
       }
     },
     root: {

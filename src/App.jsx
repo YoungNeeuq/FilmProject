@@ -1,9 +1,9 @@
 import "./App.css"
-import Navigation from "./Components/Navigation"
+import Home from "./Layout/Home"
 export default function App() {
   return (
     <>
-      <Navigation></Navigation>
+      <Home></Home>
     </>
   )
 }
