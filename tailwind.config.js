@@ -24,9 +24,6 @@ export default {
       },
       borderColor: {
         1: "1px"
-      },
-      lineHeight: {
-        banner: "1"
       }
     },
     root: {

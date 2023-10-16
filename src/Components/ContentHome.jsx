@@ -4,32 +4,34 @@ const ContentHome = () => {
   return (
     <div className="lg:mt-24 md:mt-[76px] sm:mt-[60px] mt-12  font-poppins z-1 bg-black">
       {/* Start banner */}
-      <div className=" lg:flex md:flex sm:block block lg:gap-10 md:gap-8 lg:mx-12 md:mx-8 sm:mx-4 mx-2 rounded-3xl  bg-gradient-to-r from-banner1 to-banner2 relative overflow-hidden lg:h-[650px]  md:h-[450px]">
-        <div className=" basis-3/5 lg:p-12 md:p-8 sm:p-5 p-1 z-10 relative">
-          <div className=" xl:block lg:block md:block sm:hidden hidden  circlePosition w-[450px] h-[350px] bg-[#24324F] rounded-full absolute -bottom-32 -left-32 blur-[60px] -z-10"></div>
-          <h1 className=" lg:text-banner md:text-4xl sm:text-4xl text-[35px] text-white font-bold lg:mb-10 md:mb-8 sm:mb-7 md-5">
+      <div className=" lg:flex md:block sm:block block xl:gap-10 lg:gap-2 md:gap-8 lg:mx-12 md:mx-8 sm:mx-4 mx-2 rounded-3xl  bg-gradient-to-r from-banner1 to-banner2 relative overflow-hidden xl:h-[650px] lg:h-[550px]  md:h-[1250px] h-[700px] sm:h-[1000px]">
+        <div className="xl:p-12 basis-3/5 lg:p-4 md:p-8 sm:p-5 p-1 z-10 relative">
+          <div className=" xl:block lg:block md:hidden sm:hidden hidden  circlePosition w-[450px] h-[350px] bg-[#24324F] rounded-full absolute -bottom-32 -left-32 blur-[60px] -z-10"></div>
+          <h1 className=" xl:text-banner lg:text-6xl xl:leading-none md:text-4xl sm:text-4xl text-[35px] text-white font-bold lg:mb-10 md:mb-8 sm:mb-7 md-5">
             Your personal cinema on your devices
           </h1>
-          <h3 className=" lg:text-4xl md:text-2xl sm:textxl text-base  text-white font-bold ">All news in one place</h3>
-          <h4 className=" lg:text-text md:text-xl sm:text-lg text-[10px] text-white lg:mt-16 md:mt-9 sm:mt-6 mt-4 lg:mb-6 md:mb-4 sm:mb-2 mb-1">
+          <h3 className=" xl:text-4xl lg:text-3xl md:text-2xl sm:textxl text-base  text-white font-bold ">
+            All news in one place
+          </h3>
+          <h4 className=" xl:text-text lg:text-xl md:text-xl sm:text-lg text-[10px] text-white lg:mt-16 md:mt-9 sm:mt-6 mt-4 lg:mb-6 md:mb-4 sm:mb-2 mb-1">
             Ready to watch ? Enter your phone number to register
           </h4>
-          <div className="lg:flex md:block table-caption gap-5">
+          <div className="lg:flex table-caption gap-5">
             <input
-              className=" bg-black lg:p-3 md:p-2 sm:p-2 p-2 border rounded-md lg:py-4 md:py-3 sm:py-2 py-2 lg:pr-52 md:pr-40 sm:pr-32 pr-16 lg:text-xl 
-              md:text-lg sm:text-base text-sm  lg:mb-0 md:mb-4 sm:mb-2 mb-2"
+              className=" bg-black xl:p-3 lg:p-2 md:p-2 sm:p-2 p-2 border rounded-md xl:py-4 lg:py-0 md:py-3 sm:py-2 py-2 xl:pr-52 lg:pr-16 md:pr-40 sm:pr-32 pr-16 xl:text-xl lg:text-base 
+              md:text-lg sm:text-base text-sm  lg:mb-0 md:mb-4 sm:mb-2 mb-2 text-white"
               type="text"
               name=""
               id=""
               placeholder="Phone number"
             />
-            <button className="bg-bgrbtsignin text-white font-bold rounded-lg lg:px-5 md:px-4 sm:px-3 px-2 lg:text-3xl md:text-2xl sm:text-xl text-lg border-bgrbtsignin border py-1">
+            <button className="bg-bgrbtsignin text-white font-bold rounded-lg lg:px-5 md:px-4 sm:px-3 px-2 xl:text-3xl lg:text-2xl md:text-2xl sm:text-xl md:py-[10px] text-lg border-bgrbtsignin border-4 py-1 my-auto">
               {" "}
               Get Started <FontAwesomeIcon icon={faCaretRight} className="lg:ml-1 md:ml-1 sm:ml-0 ml-0" />
             </button>
           </div>
         </div>
-        <div className=" basis-2/5 grid grid-cols-2 z-0 gap-7 relative ">
+        <div className=" basis-2/5 grid grid-cols-2 z-0 gap-7 lg:gap-3 relative ">
           <div className="z-10">
             <img className=" rounded-2xl mb-7" src="img/conjuring-3.webp" alt="" />
             <img className=" rounded-2xl" src="img/ave.jpeg" alt="" />

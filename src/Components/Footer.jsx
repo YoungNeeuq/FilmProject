@@ -2,14 +2,23 @@ import { AiOutlineInstagram, AiOutlineTwitter } from "react-icons/ai"
 import { BiLogoFacebookCircle, BiLogoTelegram } from "react-icons/bi"
 import { BsApple } from "react-icons/bs"
 import { FaGooglePlay } from "react-icons/fa6"
-import { Fragment } from "react"
-import { Menu, Transition } from "@headlessui/react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faSortDown, faGlobe, faLanguage } from "@fortawesome/free-solid-svg-icons"
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ")
-}
-const Footer = () => {
+import { useEffect, useState } from "react"
+import { AiFillCaretDown, AiOutlineGlobal } from "react-icons/ai"
+// eslint-disable-next-line react/prop-types, no-unused-vars
+const Footer = ({ language, onLanguageChange }) => {
+  const countries = [
+    { name: "English", independent: false },
+    { name: "Vietnamese", independent: false },
+    { name: "Chines", independent: false }
+  ]
+
+  const [inputValue, setInputValue] = useState("")
+  const [selected, setSelected] = useState(language)
+  useEffect(() => {
+    setSelected(language)
+  }, [language])
+  const [open, setOpen] = useState(false)
+
   return (
     <div className="bg-black mt-10">
       <div
@@ -72,52 +81,41 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between text-white lg:py-16 md:py-12 sm:py-8 py-6 lg:mx-36 md:mx-20 sm:mx-14 mx-3">
-        <div className=" border-none">
-          <Menu as="div" className="relative inline-block text-left">
-            <div>
-              <Menu.Button className="flex w-fit justify-center gap-1 rounded-md bg-stone-900 lg:px-2 md:px-2 sm:px-1 px-1 lg:py-2 md:py-2 sm:py-1 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 text-white">
-                <FontAwesomeIcon
-                  icon={faGlobe}
-                  className=" lg:mr-1 md:mr-1 lg:w-4 md:w-4 sm:w-3 w-2 lg:mt-0 md:mt-0 my-auto"
-                />
-                <p className="lg:text-xs md:text-xs text-[8px]">English</p>
-                <FontAwesomeIcon
-                  icon={faSortDown}
-                  className=" lg:w-5 md:w-4 sm:w-3 w-[5px] lg:-mt-[1px] md:-mb-1 mt-[2px]"
-                />
-              </Menu.Button>
-            </div>
-
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
+      <div className="flex justify-between text-white lg:py-16 md:py-12 sm:py-8 py-6 lg:mx-36 md:mx-20 sm:mx-14 mx-3 cursor-pointer ">
+        <div className=" border-none ">
+          <div className="w-fit font-medium my-auto">
+            <div
+              onClick={() => setOpen(!open)}
+              className={`bg-stone-900  border-[0.001px] w-fit lg:py-2 md:py-2 py- lg:px-3 md:px-2 px-2 flex items-center text-white lg:gap-2 gap-1 lg:rounded-lg rounded-md ${
+                !selected && "text-white"
+              }`}
             >
-              <Menu.Items className="absolute right-0 z-10 mt-2 w-fit origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="py-1">
-                  <Menu.Item className=" font-semibold">
-                    {({ active }) => (
-                      <a
-                        href="#"
-                        className={classNames(
-                          active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                          "block lg:px-2 lg:py-1 lg:text-xs text-[7px]"
-                        )}
-                      >
-                        Tiếng Việt
-                        <FontAwesomeIcon icon={faLanguage} className="ml-2 w-4" />
-                      </a>
-                    )}
-                  </Menu.Item>
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>
+              <AiOutlineGlobal className="-ml-1 h-5 lg:w-5 w-3 lg:text-xs" />
+              <p className="lg:text-base text-[7px]">
+                {selected ? (selected?.length > 25 ? selected?.substring(0, 25) + "..." : selected) : 1}{" "}
+              </p>
+              <AiFillCaretDown lg:size={20} md:size={17} sm:size={13} size={10} className={`${open && "rotate-180"}`} />
+            </div>
+            <ul className={`bg-white text-black rounded-md overflow-y-auto ${open ? "max-h-60" : "max-h-0"} `}>
+              {countries?.map(country => (
+                <li
+                  key={country?.name}
+                  className={`p-2 lg:text-sm text-[7px] hover:bg-sky-600 hover:text-white
+            ${country?.name?.toLowerCase() === selected?.toLowerCase() && "bg-sky-600 text-white"}
+            ${country?.name?.toLowerCase().startsWith(inputValue) ? "block" : "hidden"}`}
+                  onClick={() => {
+                    if (country?.name?.toLowerCase() !== selected.toLowerCase()) {
+                      setSelected(country?.name)
+                      setOpen(false)
+                      setInputValue("")
+                    }
+                  }}
+                >
+                  {country?.name}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div className="flex lg:gap-2 md:gap-2 gap-1 text-end text-gray-400">
           <h3 className="lg:text-xl md:text-base sm:text-md text-xs text-transparent bg-clip-text bg-gradient-to-r from-llogo2 to-llogo1 font-bold my-auto">
