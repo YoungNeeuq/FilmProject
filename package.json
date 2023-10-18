@@ -1,16 +1,14 @@
 {
-  "homepage": "https://youngneeuq.github.io/CommitCode",
-  "name": "layout-tailwind",
+  "name": "filmproject",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "feadture/HomePage",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
+    "preview": "vite preview --port 8080",
     "format": "prettier --write ./src"
   },
   "dependencies": {
@@ -30,7 +28,9 @@
     "react-icons": "^4.11.0",
     "react-native": "^0.72.6",
     "react-native-select-dropdown": "^3.4.0",
-    "react-scroll": "^1.8.9"
+    "react-scroll": "^1.8.9",
+    "react-slick": "^0.29.0",
+    "swiper": "^10.3.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

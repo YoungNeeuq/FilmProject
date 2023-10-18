@@ -92,7 +92,7 @@ const Footer = ({ language, onLanguageChange }) => {
             >
               <AiOutlineGlobal className="-ml-1 h-5 lg:w-5 w-3 lg:text-xs" />
               <p className="lg:text-base text-[7px]">
-                {selected ? (selected?.length > 25 ? selected?.substring(0, 25) + "..." : selected) : 1}{" "}
+                {selected ? (selected?.length > 25 ? selected?.substring(0, 25) + "..." : selected) : "1"}{" "}
               </p>
               <AiFillCaretDown lg:size={20} md:size={17} sm:size={13} size={10} className={`${open && "rotate-180"}`} />
             </div>
