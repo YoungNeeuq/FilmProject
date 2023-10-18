@@ -1,8 +1,7 @@
 import { useState } from "react"
-import Navigation from "../Components/Navigation"
-import ContentHome from "../Components/ContentHome"
-import Footer from "../Components/Footer"
-
+import Navigation from "./Navigation"
+import Footer from "../../Components/Footer"
+import ContentHome from "./ContentHome"
 const Home = () => {
   const [language, setLanguage] = useState("English")
   const handlelaguage = languagee => {
