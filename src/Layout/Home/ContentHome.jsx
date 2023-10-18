@@ -38,7 +38,7 @@ const ContentHome = () => {
           </div>
           <div className="z-10">
             <img className=" rounded-2xl mb-7" src="../../assets/img/fate-the-winx-saga.jpg" alt="" />
-            <img className=" rounded-2xl" src="../../../public/assets/img/behom.jpg" alt="" />
+            <img className=" rounded-2xl" src="../../assets/img/behom.jpg" alt="" />
           </div>
           <div className=" circlePosition w-[250px] h-[500px] bg-[#24324F] rounded-full absolute lg:top-0 lg:-left-32 -top-36 -right-36  lg:blur-[40px] blur-[20px] z-0"></div>
           <div className=" circlePosition w-[550px] h-[450px] bg-[#440F37] rounded-full absolute -bottom-32 -left-48 blur-[70px] z-0"></div>
