@@ -33,12 +33,12 @@ const ContentHome = () => {
         </div>
         <div className=" basis-2/5 grid grid-cols-2 z-0 gap-7 lg:gap-3 relative ">
           <div className="z-10">
-            <img className=" rounded-2xl mb-7" src="img/conjuring-3.webp" alt="" />
-            <img className=" rounded-2xl" src="img/ave.jpeg" alt="" />
+            <img className=" rounded-2xl mb-7" src="../../assets/img/conjuring-3.webp" alt="" />
+            <img className=" rounded-2xl" src="../../assets/img/ave.jpeg" alt="" />
           </div>
           <div className="z-10">
-            <img className=" rounded-2xl mb-7" src="img/fate-the-winx-saga.jpg" alt="" />
-            <img className=" rounded-2xl" src="img/behom.webp" alt="" />
+            <img className=" rounded-2xl mb-7" src="../../assets/img/fate-the-winx-saga.jpg" alt="" />
+            <img className=" rounded-2xl" src="../../../public/assets/img/behom.webp" alt="" />
           </div>
           <div className=" circlePosition w-[250px] h-[500px] bg-[#24324F] rounded-full absolute lg:top-0 lg:-left-32 -top-36 -right-36  lg:blur-[40px] blur-[20px] z-0"></div>
           <div className=" circlePosition w-[550px] h-[450px] bg-[#440F37] rounded-full absolute -bottom-32 -left-48 blur-[70px] z-0"></div>
@@ -57,7 +57,7 @@ const ContentHome = () => {
             </p>
           </div>
           <div className=" basis-1/2  z-0 my-auto relative">
-            <img src="img/anh.png" alt="" />
+            <img src="../../assets/img/anh.png" alt="" />
             <div className=" circlePosition lg:w-[550px] lg:h-[350px] w-[150px] h-[100px] bg-[#24324F] rounded-full absolute top-0 right-0 lg:blur-[40px] blur-[20px] -z-10"></div>
             <div className=" circlePosition lg:w-[550px] lg:h-[350px] w-[150px] h-[100px] bg-[#440F37] rounded-full absolute bottom-0 -left-10  lg:blur-[90px] blur-[40px] -z-10"></div>
           </div>
@@ -67,7 +67,7 @@ const ContentHome = () => {
         {/* Start Conntent 2 */}
         <div className=" flex relative lg:pt-16 md:pt-12 sm:pt-8 pt-2">
           <div className=" basis-1/2 w-3/4  z-0 relative lg:pl-40">
-            <img src="img/ave2.png" alt="" className="lg:w-[78%] w-[75%]" />
+            <img src="../../assets/img/ave2.png" alt="" className="lg:w-[78%] w-[75%]" />
             <div className=" circlePosition lg:w-[550px] lg:h-[550px] w-[150px] h-[250px] bg-[#24324F] rounded-full absolute -top-32 left-0 lg:blur-[60px] blur-[20px] -z-10"></div>
             <div className=" circlePosition lg:w-[350px] lg:h-[350px] w-[150px] h-[100px] bg-[#9b3ea9] rounded-full absolute bottom-0 right-0  lg:blur-[90px] blur-[40px] -z-10"></div>
           </div>
@@ -93,7 +93,7 @@ const ContentHome = () => {
             </p>
           </div>
           <div className=" basis-1/2 z-0 relative">
-            <img src="img/tiger.png" alt="" className="" />
+            <img src="../../assets/img/tiger.png" alt="" className="" />
             <div className=" circlePosition lg:w-[550px] lg:h-[550px] w-[150px] h-[250px] bg-[#24324F] rounded-full absolute top-10 left-0 lg:blur-[60px] blur-[20px] -z-10"></div>
             <div className=" circlePosition lg:w-[350px] lg:h-[350px] w-[150px] h-[100px] bg-[#9b3ea9] rounded-full absolute top-0 right-0  lg:blur-[90px] blur-[40px] -z-10"></div>
           </div>
@@ -103,7 +103,7 @@ const ContentHome = () => {
         {/* Start Conntent 4 */}
         <div className=" flex relative lg:pt-16 md:pt-12 sm:pt-8 pt-2 lg:mb-10">
           <div className=" basis-1/2 z-0 relative">
-            <img src="img/computer.png" alt="" className="" />
+            <img src="../../assets/img/computer.png" alt="" className="" />
             <div className=" circlePosition lg:w-[350px] lg:h-[550px] w-[150px] h-[250px] bg-[#24324F] rounded-full absolute bottom-10 left-0 lg:blur-[60px] blur-[20px] -z-10"></div>
             <div className=" circlePosition lg:w-[350px] lg:h-[350px] w-[150px] h-[100px] bg-[#9b3ea9] rounded-full absolute top-0 left-0  lg:blur-[90px] blur-[40px] -z-10"></div>
           </div>
@@ -131,7 +131,7 @@ const ContentHome = () => {
           </div>
 
           <div className=" basis-1/2 z-0 relative">
-            <img src="img/3animal.png" alt="" className="" />
+            <img src="../../assets/img/3animal.png" alt="" className="" />
             <div className=" circlePosition lg:w-[250px] lg:h-[350px] w-[100px] h-[50px] bg-[#ad6b45] rounded-full absolute lg:top-0 lg:right-48 top-0 right-10 lg:blur-[100px] blur-[40px] -z-10"></div>
             <div className=" circlePosition lg:w-[350px] lg:h-[140px] w-[150px] h-[50px] bg-[#9b3ea9] rounded-full absolute -top-10 right-0  lg:blur-[130px] blur-[50px] -z-10"></div>
           </div>
@@ -141,7 +141,7 @@ const ContentHome = () => {
         {/* Start Conntent 6 */}
         <div className=" flex relative lg:pt-16 md:pt-12 sm:pt-8 pt-2 lg:mb-10">
           <div className=" basis-1/2 z-0 relative lg:pl-16">
-            <img src="img/home-phone.png" alt="" className="lg:w-[95%]" />
+            <img src="../../assets/img/home-phone.png" alt="" className="lg:w-[95%]" />
             <div className=" circlePosition lg:w-[250px] lg:h-[350px] w-[100px] h-[50px] bg-[#ad6b45] rounded-full absolute lg:-top-32 lg:right-48 top-0 right-10 lg:blur-[120px] blur-[40px] -z-10"></div>
             <div className=" circlePosition lg:w-[400px] lg:h-[340px] w-[150px] h-[50px] bg-[#24324F] rounded-full absolute lg:-top-32 -left-10 top-0  lg:blur-[55px] blur-[20px] -z-10"></div>
           </div>
