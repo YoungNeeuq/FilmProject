@@ -4,7 +4,7 @@ import Main from "./Layout/Main/Main"
 export default function App() {
   return (
     <>
-      <Home></Home>
+      <Main></Main>
     </>
   )
 }
