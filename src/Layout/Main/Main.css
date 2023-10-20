@@ -1,5 +1,8 @@
 .slick-slide {
-  margin-right: 40px;
+  margin-right: 35px;
+}
+.weeklytop .slick-slider .slick-list .slick-track .slick-slide {
+  margin-right: 100px !important;
 }
 .slick-track {
   width: 25000px !important;
@@ -33,6 +36,7 @@
 }
 .slick-list {
   padding-top: 20px;
+  padding-bottom: 20px;
 }
 .slick-prev::before,
 .slick-next::before {
@@ -55,14 +59,18 @@
   content: "\f054"; /* Sử dụng mã Unicode của biểu tượng mũi tên sang phải từ Font Awesome */
 }
 @media only screen and (max-width: 768px) {
+  .weeklytop .slick-slider .slick-list .slick-track .slick-slide {
+    margin-right: 20px !important;
+  }
   .slick-list {
     padding-top: 10px;
+    padding-bottom: 10px;
   }
   .slick-slide {
     margin-right: 10px;
   }
   .slick-next {
-    right: -20px;
+    right: -12px;
   }
   .slick-next::before {
     font-size: 13px;
@@ -73,8 +81,12 @@
   }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .weeklytop .slick-slider .slick-list .slick-track .slick-slide {
+    margin-right: 40px !important;
+  }
   .slick-list {
     padding-top: 10px;
+    padding-bottom: 10px;
   }
   .slick-slide {
     margin-right: 16px;

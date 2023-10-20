@@ -24,6 +24,9 @@ export default {
       },
       borderColor: {
         1: "1px"
+      },
+      dropShadow: {
+        xl: "0px 0px 5px linear-gradient( to right, #ffffff , #fffacc)"
       }
     },
     root: {
