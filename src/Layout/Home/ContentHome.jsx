@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons"
+import { NavLink } from "react-router-dom"
 const ContentHome = () => {
   return (
     <div className="lg:mt-24 md:mt-[76px] sm:mt-[60px] mt-12  font-poppins z-1 bg-black">
@@ -25,10 +26,13 @@ const ContentHome = () => {
               id=""
               placeholder="Phone number"
             />
-            <button className="bg-bgrbtsignin text-white font-bold rounded-lg lg:px-5 md:px-4 sm:px-3 px-2 xl:text-3xl lg:text-2xl md:text-2xl sm:text-xl md:py-[10px] text-lg border-bgrbtsignin border-4 py-1 my-auto">
+            <NavLink
+              to="/main"
+              className="bg-bgrbtsignin text-white font-bold rounded-lg lg:px-5 md:px-4 sm:px-3 px-2 xl:text-3xl lg:text-2xl md:text-2xl sm:text-xl md:py-[10px] text-lg border-bgrbtsignin border-4 py-1 my-auto"
+            >
               {" "}
               Get Started <FontAwesomeIcon icon={faCaretRight} className="lg:ml-1 md:ml-1 sm:ml-0 ml-0" />
-            </button>
+            </NavLink>
           </div>
         </div>
         <div className=" basis-2/5 grid grid-cols-2 z-0 gap-7 lg:gap-3 relative ">

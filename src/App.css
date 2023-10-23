@@ -8,6 +8,3 @@
   scrollbar-width: none; /* For Firefox */
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
-.swiper-wrapper {
-  justify-content: center;
-}

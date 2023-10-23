@@ -1,0 +1,122 @@
+.slick-slide {
+  margin-right: 35px;
+}
+.weeklytop .slick-slider .slick-list .slick-track .slick-slide {
+  margin-right: 100px !important;
+}
+.icon .slick-slider .slick-list .slick-track .slick-slide {
+  margin-right: -25px !important;
+}
+.icon .slick-slider button {
+  display: none !important;
+}
+.slick-track {
+  width: 25000px !important;
+  display: flex;
+  align-items: center;
+}
+.slick-prev,
+.slick-next {
+  color: #ffff !important;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  width: 40px;
+  padding: 15px 0;
+  height: fit-content;
+  background-color: #706975 !important;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  color: white;
+}
+
+.slick-prev {
+  display: none !important;
+}
+
+.slick-next {
+  right: -25px;
+}
+.slick-list {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.slick-prev::before,
+.slick-next::before {
+  font-size: 20px;
+}
+
+/* Set hover effects for the arrows */
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: #e0e0e0; /* Set hover background color */
+}
+.slick-prev::before {
+  font-family: "Font Awesome 5 Free"; /* Chọn font icon phù hợp */
+  font-weight: 900; /* Đảm bảo rằng font weight là đủ để hiển thị biểu tượng */
+  content: "\f053"; /* Sử dụng mã Unicode của biểu tượng mũi tên sang trái từ Font Awesome */
+}
+.slick-next::before {
+  font-family: "Font Awesome 5 Free"; /* Chọn font icon phù hợp */
+  font-weight: 900; /* Đảm bảo rằng font weight là đủ để hiển thị biểu tượng */
+  content: "\f054"; /* Sử dụng mã Unicode của biểu tượng mũi tên sang phải từ Font Awesome */
+}
+.custom-flex {
+  display: flex !important;
+  gap: 7px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .weeklytop .slick-slider .slick-list .slick-track .slick-slide {
+    margin-right: 20px !important;
+  }
+  .slick-list {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .slick-slide {
+    margin-right: 10px;
+  }
+  .slick-next {
+    right: -12px;
+  }
+  .slick-next::before {
+    font-size: 13px;
+  }
+  .slick-next {
+    padding: 14px 10px;
+    width: fit-content;
+  }
+  .icon .slick-slider .slick-next {
+    display: block !important;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .weeklytop .slick-slider .slick-list .slick-track .slick-slide {
+    margin-right: 40px !important;
+  }
+  .slick-list {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .slick-slide {
+    margin-right: 16px;
+  }
+  .slick-next::before {
+    font-size: 17px;
+  }
+  .slick-next {
+    padding: 14px 10px;
+    width: fit-content;
+  }
+  .slick-next {
+    right: -20px;
+  }
+}

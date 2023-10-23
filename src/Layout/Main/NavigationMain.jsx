@@ -1,33 +1,69 @@
-const NavigationMain = () => {
+import { useState } from "react"
+import { AiFillCaretDown, AiOutlineGlobal } from "react-icons/ai"
+// eslint-disable-next-line react/prop-types, no-unused-vars
+const Navigation = ({ language, onLanguageChange }) => {
+  const countries = [
+    { name: "English", independent: false },
+    { name: "Vietnamese", independent: false },
+    { name: "Chines", independent: false }
+  ]
+  const [inputValue, setInputValue] = useState("")
+  const [selected, setSelected] = useState(language)
+  const [open, setOpen] = useState(false)
+  const handleLanguageChange = selected => {
+    onLanguageChange(selected)
+  }
   return (
-    <nav className="flex flex-wrap items-center justify-between bg-gray-200 p-6">
-      {/* Logo and User */}
-      <div className="w-full md:w-auto md:flex md:items-center">
-        <div className="flex-shrink-0 text-black mr-6">
-          <span className="font-semibold text-xl tracking-tight">Logo</span>
-        </div>
-        <div className="w-full md:w-auto md:flex md:items-center">
-          <a href="#" className="block mt-4 md:inline-block md:mt-0 text-teal-200 hover:text-white">
-            User
-          </a>
-        </div>
+    <div className=" flex justify-between bg-black fixed top-0 left-0 right-0 lg:p-6 md:p-4 sm:p-2 p-1 z-20 lg:h-24 md:h-20 h-16">
+      <div>
+        <h1 className=" lg:text-4xl md:text-3xl sm:text-3xl text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-llogo2 to-llogo1 p-1">
+          PlayOn
+        </h1>
       </div>
+      <div className="flex lg:gap-6 md:gap:4 sm:gap:2 gap-1 justify-center  my-auto cursor-pointer ">
+        <div className="w-fi font-medium ">
+          <div
+            onClick={() => setOpen(!open)}
+            onChange={handleLanguageChange(selected)}
+            className={`bg-stone-900 border-[0.001px] w-fit lg:py-2 md:py-2 py-1 lg:px-3 md:px-2 px-2 flex items-center text-white lg:gap-2 gap-1 rounded-lg ${
+              !selected && "text-white"
+            }`}
+          >
+            <AiOutlineGlobal className="-ml-1 h-5 w-5 text-xs" />
+            <AiFillCaretDown size={20} className={`${open && "rotate-180"}`} />
+          </div>
+          <ul className={`bg-white rounded-md mt-2 overflow-y-auto ${open ? "max-h-60" : "max-h-0"} `}>
+            {countries?.map(country => (
+              <li
+                key={country?.name}
+                className={`p-2 text-sm hover:bg-sky-600 hover:text-white
+            ${country?.name?.toLowerCase() === selected?.toLowerCase() && "bg-sky-600 text-white"}
+            ${country?.name?.toLowerCase().startsWith(inputValue) ? "block" : "hidden"}`}
+                onClick={() => {
+                  if (country?.name?.toLowerCase() !== selected.toLowerCase()) {
+                    setSelected(country?.name)
+                    setOpen(false)
+                    setInputValue("")
+                  }
+                }}
+              >
+                {country?.name}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      {/* Login and Language */}
-      <div className="w-full md:w-auto md:flex md:items-center md:ml-auto flex-col md:flex-row md:space-x-4">
-        <div className="text-sm">
-          <a href="#" className="block mt-4 md:inline-block md:mt-0 text-teal-200 hover:text-white">
-            Login
-          </a>
+        <button className="text-white bg-bgrbtsignin font-semibold lg:px-5 md:px-4 sm:px-3 px-2 rounded-md lg:h-[42px] md:h-[42px] sm:h-[34px] h-[34px] "></button>
+
+        <div>
+          <img src="../../assets/img/icon/noti.png" alt="" />
         </div>
-        <div className="text-sm">
-          <a href="#" className="block mt-4 md:inline-block md:mt-0 text-teal-200 hover:text-white">
-            Language
-          </a>
+        <div>
+          <img src="../../assets/img/icon/user.png" alt="" />
         </div>
       </div>
-    </nav>
+    </div>
   )
 }
 
-export default NavigationMain
+export default Navigation
