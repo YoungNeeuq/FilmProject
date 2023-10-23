@@ -4,8 +4,16 @@
 .weeklytop .slick-slider .slick-list .slick-track .slick-slide {
   margin-right: 100px !important;
 }
+.icon .slick-slider .slick-list .slick-track .slick-slide {
+  margin-right: -25px !important;
+}
+.icon .slick-slider button {
+  display: none !important;
+}
 .slick-track {
   width: 25000px !important;
+  display: flex;
+  align-items: center;
 }
 .slick-prev,
 .slick-next {
@@ -58,6 +66,13 @@
   font-weight: 900; /* Đảm bảo rằng font weight là đủ để hiển thị biểu tượng */
   content: "\f054"; /* Sử dụng mã Unicode của biểu tượng mũi tên sang phải từ Font Awesome */
 }
+.custom-flex {
+  display: flex !important;
+  gap: 7px;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (max-width: 768px) {
   .weeklytop .slick-slider .slick-list .slick-track .slick-slide {
     margin-right: 20px !important;
@@ -78,6 +93,9 @@
   .slick-next {
     padding: 14px 10px;
     width: fit-content;
+  }
+  .icon .slick-slider .slick-next {
+    display: block !important;
   }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import Slider from "react-slick"
 import axios from "axios"
+import ReactPlayer from "react-player"
 import "./Main.css" // import CSS file
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // import { faCaretRight } from "@fortawesome/free-solid-svg-icons"
@@ -9,6 +10,7 @@ const ContentMain = () => {
   const [series, setSeries] = useState([])
   const [cartoons, setCartoons] = useState([])
   const [weeklytops, setWeeklytops] = useState([])
+  const [videos, setVideos] = useState([])
   useEffect(() => {
     axios.get("https://652604c767cfb1e59ce7d148.mockapi.io/Content").then(response => {
       setMovies([])
@@ -28,10 +30,73 @@ const ContentMain = () => {
           if (data.type === "weeklytop") {
             setWeeklytops(old => [...old, data])
           }
+          if (data.type === "video") {
+            setVideos(old => [...old, data])
+          }
         }
       })
     })
   }, [])
+  const settingsicon = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 7,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 550,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 1,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  }
+  const settingsvideo = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 550,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 1,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  }
   const settings = {
     dots: false,
     infinite: true,
@@ -96,16 +161,73 @@ const ContentMain = () => {
       }
     ]
   }
-
   return (
-    <div className="bg-[#040714] rounded-lg xl:mx-16 lg:mx-12 md:mx-5 mx-3 ">
-      {/* Start movies */}
-      <div className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2">
-        <Slider {...settings}>
-          <div></div>
+    <div className="bg-[#040714] rounded-lg xl:mx-16 lg:mx-12 md:mx-5 mx-3 mt-24 ">
+      {/* Start bar */}
+      <div className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 icon">
+        <Slider {...settingsicon}>
+          <div className="custom-flex">
+            <img src="../../assets/img/icon/ghim.png" alt="" />
+            <p className="text-white">Looked</p>
+          </div>
+          <div className="custom-flex">
+            <img src="../../assets/img/icon/movies.png" alt="" />
+            <p className="text-white">Movies</p>
+          </div>
+
+          <div className="custom-flex">
+            <img src="../../assets/img/icon/video.png" alt="" />
+            <p className="text-white mb-1">Series</p>
+          </div>
+
+          <div className="custom-flex">
+            <img src="../../assets/img/icon/popcorn.png" alt="" />
+            <p className="text-white">Cartoons</p>
+          </div>
+
+          <div className="custom-flex">
+            <img src="../../assets/img/icon/star.png" alt="" />
+            <p className="text-white">Top</p>
+          </div>
+
+          <div className="custom-flex">
+            <img src="../../assets/img/icon/dowload.png" alt="" />
+            <p className="text-white">Download</p>
+          </div>
+
+          <div className="custom-flex">
+            <img src="../../assets/img/icon/tv.png" alt="" />
+            <p className="text-white">New</p>
+          </div>
+
+          <div className="custom-flex">
+            <img src="../../assets/img/icon/love.png" alt="" />
+            <p className="text-white">Like</p>
+          </div>
         </Slider>
       </div>
-      {/* End movies */}
+      {/* End bar */}
+
+      {/* Start video */}
+      <div className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2">
+        <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-8 lg:mb-5 md:mb-4 mb-3">
+          Continue Watching
+        </h4>
+        <Slider {...settingsvideo}>
+          {videos.map(video => (
+            <div className="player-wrapper" key={video.id}>
+              <ReactPlayer
+                className="react-player rounded-xl"
+                url={video.image}
+                width="100%"
+                height="350px"
+                controls={true}
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
+      {/* End video */}
 
       {/* Start movies */}
       <div className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2">
