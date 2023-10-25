@@ -23,12 +23,12 @@ const Footer = ({ language, onLanguageChange }) => {
     <div className="bg-black mt-10">
       <div
         className="flex text-gray-400 lg:text-2xl md:text-xl sm:text-lg text-xs lg:gap-5 md:gap-5 sm:gap-4 gap-3 w-fit mx-auto 
-      lg:my-16  md:my-12 sm:my-8 my-4"
+      lg:my-16  md:my-12 sm:my-8 my-4 "
       >
-        <AiOutlineInstagram></AiOutlineInstagram>
-        <AiOutlineTwitter></AiOutlineTwitter>
-        <BiLogoFacebookCircle></BiLogoFacebookCircle>
-        <BiLogoTelegram></BiLogoTelegram>
+        <AiOutlineInstagram className="hover:cursor-pointer hover:text-[#4c6aa7] "></AiOutlineInstagram>
+        <AiOutlineTwitter className="hover:cursor-pointer hover:text-[#4c6aa7] "></AiOutlineTwitter>
+        <BiLogoFacebookCircle className="hover:cursor-pointer hover:text-[#4c6aa7] "></BiLogoFacebookCircle>
+        <BiLogoTelegram className="hover:cursor-pointer hover:text-[#4c6aa7] "></BiLogoTelegram>
       </div>
       <div className="lg:mx-auto md:mx-auto sm:mx-12 mx-16 w-fit lg:my-5 my-5">
         <ul className="flex text-gray-400 lg:gap-10 gap-6 lg:text-xl md:text-lg sm:text-base text-xs flex-wrap justify-center">

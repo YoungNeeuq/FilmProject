@@ -4,13 +4,12 @@ import "swiper/css"
 import "swiper/css/effect-coverflow"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
-
+import "./Main.css" // import CSS file
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules"
 
 const BannerMain = () => {
   return (
-    <div className="container">
-      <h1 className="heading">Flower Gallery</h1>
+    <div className=" mt-24">
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
@@ -33,20 +32,47 @@ const BannerMain = () => {
         className="swiper_container"
       >
         <SwiperSlide className="w-fit">
-          <img src="img/mainpage/avatar.webp" alt="slide_image" />
+          <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
         </SwiperSlide>
         <SwiperSlide className="w-fit">
-          <img src="img/mainpage/ff8.jpg" alt="slide_image" />
+          <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
         </SwiperSlide>
         <SwiperSlide className="w-fit">
-          <img src="img/mainpage/notimetodie.jpg" alt="slide_image" />
+          <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
         </SwiperSlide>
         <SwiperSlide className="w-fit">
-          <img src="img/mainpage/old.jpg" alt="slide_image" />
+          <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
         </SwiperSlide>
         <SwiperSlide className="w-fit">
-          <img src="img/mainpage/onward.jfif" alt="slide_image" />
+          <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
         </SwiperSlide>
+        <SwiperSlide className="w-fit">
+          <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+        </SwiperSlide>
+        <SwiperSlide className="w-fit ">
+          <div className="large-slide">
+            <img src="../../assets/img/mainpage/banner/avatar.png" alt="slide_image" />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className="w-fit">
+          <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+        </SwiperSlide>
+        <SwiperSlide className="w-fit">
+          <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+        </SwiperSlide>
+        <SwiperSlide className="w-fit">
+          <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+        </SwiperSlide>
+        <SwiperSlide className="w-fit">
+          <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+        </SwiperSlide>
+        <SwiperSlide className="w-fit">
+          <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+        </SwiperSlide>
+        <SwiperSlide className="w-fit">
+          <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+        </SwiperSlide>
+
         <div className="slider-controler">
           <div className="swiper-button-prev slider-arrow">
             <ion-icon name="arrow-back-outline"></ion-icon>
@@ -54,7 +80,6 @@ const BannerMain = () => {
           <div className="swiper-button-next slider-arrow">
             <ion-icon name="arrow-forward-outline"></ion-icon>
           </div>
-          <div className="swiper-pagination"></div>
         </div>
       </Swiper>
     </div>

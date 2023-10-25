@@ -1,5 +1,5 @@
 import Footer from "../../Components/Footer"
-// import BannerMain from "./BannerMain"
+import BannerMain from "./BannerMain"
 import { useState } from "react"
 import ContentMain from "./ContentMain"
 import NavigationMain from "./NavigationMain"
@@ -11,7 +11,7 @@ const Main = () => {
   return (
     <div className="bg-black">
       <NavigationMain className="z-10" language={language} onLanguageChange={handlelaguage}></NavigationMain>
-      {/* <BannerMain></BannerMain> */}
+      <BannerMain></BannerMain>
       <ContentMain className="mt-20"></ContentMain>
       <Footer language={"English"}></Footer>
     </div>
