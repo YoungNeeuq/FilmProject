@@ -15,6 +15,12 @@
   display: flex;
   align-items: center;
 }
+.large-slide {
+  transform: scale(1.2); /* hoặc kích thước tùy chọn khác */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .slick-prev,
 .slick-next {
   color: #ffff !important;

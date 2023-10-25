@@ -3,6 +3,7 @@ import Slider from "react-slick"
 import axios from "axios"
 import ReactPlayer from "react-player"
 import "./Main.css" // import CSS file
+import { BsChevronDown } from "react-icons/bs"
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // import { faCaretRight } from "@fortawesome/free-solid-svg-icons"
 const ContentMain = () => {
@@ -168,7 +169,7 @@ const ContentMain = () => {
         <Slider {...settingsicon}>
           <div className="custom-flex">
             <img src="../../assets/img/icon/ghim.png" alt="" />
-            <p className="text-white">Looked</p>
+            <p className="text-white ">Looked</p>
           </div>
           <div className="custom-flex">
             <img src="../../assets/img/icon/movies.png" alt="" />
@@ -267,16 +268,28 @@ const ContentMain = () => {
 
       {/* Start banner content */}
       <div className=" relative mb-20 ">
-        <div className="absolute -inset-7 bg-gradient-to-r from-[#24324F] to-[#772462] rounded-lg blur-2xl opacity-95 w-[94%] mx-auto"></div>
+        <div className="absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#772462] rounded-lg blur-2xl opacity-95 w-[94%] mx-auto"></div>
         <div
           className=" lg:flex md:block sm:block block xl:gap-10 lg:gap-2 md:gap-8 lg:mx-12 md:mx-8 sm:mx-4 mx-2 rounded-3xl  bg-gradient-to-r from-banner1 to-banner2
        relative  overflow-hidden xl:h-[650px] lg:h-[550px]  md:h-[1250px] h-[700px] sm:h-[1000px]"
         >
           <div className="xl:p-12 basis-3/5 lg:p-4 md:p-8 sm:p-5 p-1 z-10 relative">
             <div className=" xl:block lg:block md:hidden sm:hidden hidden  circlePosition w-[450px] h-[350px]  rounded-full absolute -bottom-32 -left-32 blur-[60px] -z-10"></div>
-            <h1 className=" leading-loose xl:text-7xl lg:text-6xl  md:text-4xl sm:text-4xl text-[35px] text-white font-bold lg:mb-10 md:mb-8 sm:mb-7 md-5">
+            <h1 className=" leading-8 xl:text-7xl lg:text-6xl  md:text-4xl sm:text-4xl text-[35px] text-white font-bold lg:mb-10 md:mb-8 sm:mb-7 md-5">
               Suggest what to see in the evening
             </h1>
+            <div className="flex gap-10 absolute bottom-20">
+              <div className="flex gap-2 bg-[#3E394D] opacity-70 px-6 py-2 rounded-lg justify-center text-white border-2">
+                <img src="../../assets/img/icon/thinking.png" alt="" />
+                <h3 className="my-auto text-xl">Mood</h3>
+                <BsChevronDown className="my-auto"></BsChevronDown>
+              </div>
+              <div className="flex gap-2 bg-[#3E394D] opacity-70 px-6 py-2 rounded-lg justify-center text-white border-2">
+                <img src="../../assets/img/icon/friends.png" alt="" />
+                <h3 className="my-auto text-xl">With somebody</h3>
+                <BsChevronDown className="my-auto"></BsChevronDown>
+              </div>
+            </div>
           </div>
           <div className=" basis-2/5 grid grid-cols-2 z-0 gap-7 lg:gap-3 relative ">
             <div className="z-10">
