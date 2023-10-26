@@ -48,7 +48,7 @@ const ContentMain = () => {
       {
         breakpoint: 550,
         settings: {
-          slidesToShow: 6,
+          slidesToShow: 5,
           slidesToScroll: 1
         }
       },
@@ -78,7 +78,7 @@ const ContentMain = () => {
       {
         breakpoint: 550,
         settings: {
-          slidesToShow: 6,
+          slidesToShow: 2,
           slidesToScroll: 1
         }
       },
@@ -163,47 +163,47 @@ const ContentMain = () => {
     ]
   }
   return (
-    <div className="bg-[#040714] rounded-lg xl:mx-16 lg:mx-12 md:mx-5 mx-3 mt-24 ">
+    <div className="bg-[#040714] rounded-lg xl:mx-16 lg:mx-12 md:mx-5 mx-3 xl:mt-28 lg:mt-10 mt-3 ">
       {/* Start bar */}
-      <div className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 icon">
+      <div className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 mb-8 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 icon pt-7">
         <Slider {...settingsicon}>
           <div className="custom-flex">
-            <img src="../../assets/img/icon/ghim.png" alt="" />
-            <p className="text-white ">Looked</p>
+            <img className="xl:w-[14%] lg:w-[14%] w-[16px]" src="../../assets/img/icon/ghim.png" alt="" />
+            <p className="text-white xl:text-base lg:text-base text-[11px]">Looked</p>
           </div>
           <div className="custom-flex">
-            <img src="../../assets/img/icon/movies.png" alt="" />
-            <p className="text-white">Movies</p>
-          </div>
-
-          <div className="custom-flex">
-            <img src="../../assets/img/icon/video.png" alt="" />
-            <p className="text-white mb-1">Series</p>
+            <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/movies.png" alt="" />
+            <p className="text-white xl:text-base lg:text-base text-[11px]">Movies</p>
           </div>
 
           <div className="custom-flex">
-            <img src="../../assets/img/icon/popcorn.png" alt="" />
-            <p className="text-white">Cartoons</p>
+            <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/video.png" alt="" />
+            <p className="text-white mb-1 xl:text-base lg:text-base text-[11px]">Series</p>
           </div>
 
           <div className="custom-flex">
-            <img src="../../assets/img/icon/star.png" alt="" />
-            <p className="text-white">Top</p>
+            <img className="xl:w-[14%] lg:w-[14%] w-[16px]" src="../../assets/img/icon/popcorn.png" alt="" />
+            <p className="text-white xl:text-base lg:text-base text-[11px]">Cartoons</p>
           </div>
 
           <div className="custom-flex">
-            <img src="../../assets/img/icon/dowload.png" alt="" />
-            <p className="text-white">Download</p>
+            <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/star.png" alt="" />
+            <p className="text-white xl:text-base lg:text-base text-[11px]">Top</p>
           </div>
 
           <div className="custom-flex">
-            <img src="../../assets/img/icon/tv.png" alt="" />
-            <p className="text-white">New</p>
+            <img className="xl:w-[14%] lg:w-[14%] w-[16px]" src="../../assets/img/icon/dowload.png" alt="" />
+            <p className="text-white xl:text-base lg:text-base text-[11px]">Download</p>
           </div>
 
           <div className="custom-flex">
-            <img src="../../assets/img/icon/love.png" alt="" />
-            <p className="text-white">Like</p>
+            <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/tv.png" alt="" />
+            <p className="text-white xl:text-base lg:text-base text-[11px]">New</p>
+          </div>
+
+          <div className="custom-flex">
+            <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/love.png" alt="" />
+            <p className="text-white xl:text-base lg:text-base text-[11px]">Like</p>
           </div>
         </Slider>
       </div>
@@ -238,10 +238,14 @@ const ContentMain = () => {
         <Slider {...settings}>
           {movies.map(movie => (
             <div
-              className=" self-center xl:h-[300px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10"
+              className=" before: self-center xl:h-[300px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10 relative group"
               key={movie.id}
             >
               <img src={movie.image} className=" rounded-lg w-full h-full object-cover" alt={`movie-${movie.id}`} />
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white opacity-0 group-hover:opacity-100">
+                <div className="animate-slideIn mb-2 font-bold">{movie.title}</div>
+                <div className="animate-slideIn">{movie.time}</div>
+              </div>
             </div>
           ))}
         </Slider>
@@ -256,10 +260,14 @@ const ContentMain = () => {
         <Slider {...settings}>
           {series.map(serie => (
             <div
-              className=" self-center xl:h-[300px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10"
+              className=" self-center xl:h-[300px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10 relative group"
               key={serie.id}
             >
               <img src={serie.image} className=" rounded-lg w-full h-full object-cover" alt={`serie-${serie.id}`} />
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white opacity-0 group-hover:opacity-100">
+                <div className="animate-slideIn mb-2 font-bold">{serie.title}</div>
+                <div className="animate-slideIn">{serie.time}</div>
+              </div>
             </div>
           ))}
         </Slider>
@@ -315,7 +323,7 @@ const ContentMain = () => {
         <Slider {...settings}>
           {cartoons.map(cartoon => (
             <div
-              className=" self-center xl:h-[300px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10 w-2/3"
+              className=" self-center xl:h-[300px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10 w-2/3 relative group"
               key={cartoon.id}
             >
               <img
@@ -323,6 +331,10 @@ const ContentMain = () => {
                 className=" rounded-lg w-full h-full object-cover"
                 alt={`cartoon-${cartoon.id}`}
               />
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white opacity-0 group-hover:opacity-100">
+                <div className="animate-slideIn mb-2 font-bold">{cartoon.title}</div>
+                <div className="animate-slideIn">{cartoon.time}</div>
+              </div>
             </div>
           ))}
         </Slider>
@@ -337,14 +349,20 @@ const ContentMain = () => {
         <Slider {...settingsweekly}>
           {weeklytops.map(weeklytop => (
             <div
-              className=" self-center xl:h-[300px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10 relative"
+              className=" self-center xl:h-[300px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10  relative group"
               key={weeklytop.id}
             >
-              <img
-                src={weeklytop.image}
-                className=" rounded-lg w-full h-full object-cover "
-                alt={`weeklytop-${weeklytop.id}`}
-              />
+              <div>
+                <img
+                  src={weeklytop.image}
+                  className=" rounded-lg w-full h-full object-cover "
+                  alt={`weeklytop-${weeklytop.id}`}
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white opacity-0 group-hover:opacity-100">
+                  <div className="animate-slideIn mb-2 font-bold">{weeklytop.title}</div>
+                  <div className="animate-slideIn">{weeklytop.time}</div>
+                </div>
+              </div>
               <p
                 className="text-[#868E9A] absolute xl:text-[250px] lg:text-[170px] md:text-[150px] sm:text-[110px] text-7xl font-bold 
               xl:top-20 xl:-right-16 lg:top-12 md:-bottom-5 md:-right-10 sm:-bottom-5 sm:-right-6 -right-4 -bottom-3"
