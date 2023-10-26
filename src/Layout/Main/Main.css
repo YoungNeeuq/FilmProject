@@ -78,7 +78,23 @@
   justify-content: center;
   align-items: center;
 }
-
+.slider-arrow {
+  height: fit-content;
+  position: absolute;
+  right: 20%;
+  padding: 10px 25px;
+  color: white;
+  background-color: #989a9d;
+  border-radius: 6px;
+}
+.swiper-button-prev {
+  position: absolute;
+  left: 20%;
+  padding: 10px 25px;
+  color: white;
+  background-color: #989a9d;
+  border-radius: 6px;
+}
 @media only screen and (max-width: 768px) {
   .weeklytop .slick-slider .slick-list .slick-track .slick-slide {
     margin-right: 20px !important;
@@ -103,6 +119,50 @@
   .icon .slick-slider .slick-next {
     display: block !important;
   }
+  .icon .slick-slider .slick-list .slick-track .slick-slide {
+    margin-right: 0px !important;
+  }
+  .custom-flex {
+    display: flex !important;
+    gap: 3px;
+    justify-content: center;
+    align-items: center;
+  }
+  .slider-arrow {
+    height: fit-content;
+    position: absolute;
+    right: 15%;
+    padding: 8px 21px;
+    color: white;
+    background-color: #989a9d;
+    border-radius: 6px;
+  }
+  .swiper-button-prev {
+    position: absolute;
+    left: 15%;
+    padding: 8px 21px;
+    color: white;
+    background-color: #989a9d;
+    border-radius: 6px;
+  }
+  .swiper-button-next:after {
+    font-size: 35px;
+  }
+  .swiper-button-prev:after {
+    font-size: 35px;
+  }
+}
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.5s ease;
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   .weeklytop .slick-slider .slick-list .slick-track .slick-slide {
@@ -124,5 +184,10 @@
   }
   .slick-next {
     right: -20px;
+  }
+}
+@media only screen and (min-width: 1025px) and (max-width: 1279px) {
+  .icon .slick-slider .slick-list .slick-track .slick-slide {
+    margin-right: -20px !important;
   }
 }

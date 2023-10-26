@@ -42,34 +42,31 @@ const Navigation = ({ language, onLanguageChange }) => {
 
   return (
     <div className=" flex justify-between bg-black fixed top-0 left-0 right-0 xl:px-10 lg:p-6 md:p-4 sm:p-2 p-1 z-20 lg:h-24 md:h-20 h-16">
-      <div className="flex gap-14">
+      <div className="flex xl:gap-14 lg:gap-10">
         <h1 className=" lg:text-4xl md:text-3xl sm:text-3xl text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-llogo2 to-llogo1 p-1">
           PlayOn
         </h1>
 
-        <div className=" flex z-50 text-white lg:py-5 px-4 py-4" path="/">
-          <div className=" lg:flex md:flex sm:flex flex-1 items-center justify-end font-normal hidden text-xl font-poppins ">
-            <ul className=" flex gap-16">
+        <div className=" flex z-50 text-white lg:py-5 py-4" path="/">
+          <div className=" lg:flex md:flex sm:flex flex-1 items-center justify-end font-normal hidden xl:text-xl lg:text-lg font-poppins ">
+            <ul className=" flex xl:gap-16 lg:gap-10">
               <li>
-                <NavLink to="/layout-tailwind/home" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
+                <NavLink to="/" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
                   Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/layout-tailwind/infor" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
+                <NavLink to="/" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
                   Movies
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/layout-tailwind/contact"
-                  className={({ isActive }) => (isActive ? activeLink : normalLink)}
-                >
+                <NavLink to="/" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
                   Series
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/layout-tailwind/home" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
+                <NavLink to="/" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
                   Top
                 </NavLink>
               </li>
@@ -95,7 +92,7 @@ const Navigation = ({ language, onLanguageChange }) => {
             <AiFillCaretDown size={20} className={`${open && "rotate-180"}`} />
           </div>
 
-          <ul className={`bg-white rounded-md mt-2 overflow-y-auto ${open ? "max-h-60" : "max-h-0"} `}>
+          {/* <ul className={`bg-white rounded-md mt-2 overflow-y-auto ${open ? "max-h-60" : "max-h-0"} `}>
             {countries?.map(country => (
               <li
                 key={country?.name}
@@ -113,19 +110,19 @@ const Navigation = ({ language, onLanguageChange }) => {
                 {country?.name}
               </li>
             ))}
-          </ul>
+          </ul> */}
         </div>
         <div className="my-auto">
-          <img src="../../assets/img/icon/search.png" className=" w-8/12 " alt="" />
+          <img className="-mr-3 xl:-mr-3 xl:w-full lg:w-full w-[75%]" src="../../assets/img/icon/search.png" alt="" />
         </div>
-        <button className="text-white bg-bgrbtsignin font-semibold lg:px-5 md:px-4 sm:px-3 px-2 rounded-md lg:h-[45px] md:h-[45px] sm:h-[35px] h-[35px] ">
+        <button className="text-white bg-bgrbtsignin font-semibold lg:px-5 md:px-4 sm:px-3 px-4 rounded-md lg:h-[45px] md:h-[45px] sm:h-[30px] h-[30px] xl:text-base lg:text-base text-xs ">
           Buy for 50$
         </button>
-        <div className="my-auto">
+        <div className="my-auto xl:block lg:block hidden">
           <img className=" w-8/12 " src="../../assets/img/icon/noti.png" alt="" />
         </div>
-        <div className="my-auto">
-          <img src="../../assets/img/icon/user.png" alt="" />
+        <div className="my-auto xl:mx-0 lg:mx-0 ml-3">
+          <img className="xl:w-full lg:w-full w-[65%]" src="../../assets/img/icon/user.png" alt="" />
         </div>
       </div>
     </div>
