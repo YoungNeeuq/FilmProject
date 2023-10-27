@@ -14,13 +14,13 @@ const ContentHome = () => {
           <h3 className=" xl:text-4xl lg:text-3xl md:text-2xl sm:textxl text-base  text-white font-bold ">
             All news in one place
           </h3>
-          <h4 className=" xl:text-text lg:text-xl md:text-xl sm:text-lg text-[10px] text-white lg:mt-16 md:mt-9 sm:mt-6 mt-4 lg:mb-6 md:mb-4 sm:mb-2 mb-1">
+          <h4 className=" xl:text-text lg:text-xl md:text-xl sm:text-lg text-[10px] text-white lg:mt-16 md:mt-9 sm:mt-6 mt-4 lg:mb-6 md:mb-4 sm:mb-2 mb-2">
             Ready to watch ? Enter your phone number to register
           </h4>
           <div className="lg:flex table-caption gap-5">
             <input
               className=" bg-black xl:p-3 lg:p-2 md:p-2 sm:p-2 p-2 border rounded-md xl:py-4 lg:py-0 md:py-3 sm:py-2 py-2 xl:pr-52 lg:pr-16 md:pr-40 sm:pr-32 pr-16 xl:text-xl lg:text-base 
-              md:text-lg sm:text-base text-sm  lg:mb-0 md:mb-4 sm:mb-2 mb-2 text-white"
+              md:text-lg sm:text-base text-sm  lg:mb-0 md:mb-4 sm:mb-2 mb-3 text-white"
               type="text"
               name=""
               id=""
@@ -35,7 +35,7 @@ const ContentHome = () => {
             </NavLink>
           </div>
         </div>
-        <div className=" basis-2/5 grid grid-cols-2 z-0 gap-7 lg:gap-3 relative ">
+        <div className=" basis-2/5 grid grid-cols-2 z-0 gap-7 lg:gap-3 relative xl:-mt-2 mt-2 ">
           <div className="z-10">
             <img className=" rounded-2xl mb-7" src="../../assets/img/conjuring-3.webp" alt="" />
             <img className=" rounded-2xl" src="../../assets/img/ave.jpeg" alt="" />

@@ -66,9 +66,7 @@ const BannerMain = () => {
           <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
         </SwiperSlide>
         <SwiperSlide className="w-fit ">
-          <div className="large-slide">
-            <img src="../../assets/img/mainpage/banner/avatar.png" alt="slide_image" />
-          </div>
+          <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
         </SwiperSlide>
         <SwiperSlide className="w-fit">
           <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />

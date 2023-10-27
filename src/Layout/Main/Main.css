@@ -95,6 +95,17 @@
   background-color: #989a9d;
   border-radius: 6px;
 }
+.image-container {
+  display: flex;
+  padding-bottom: 60px;
+}
+
+.image-container img {
+  flex: 1;
+  object-fit: cover;
+  height: auto;
+  max-width: 100%;
+}
 @media only screen and (max-width: 768px) {
   .weeklytop .slick-slider .slick-list .slick-track .slick-slide {
     margin-right: 20px !important;
@@ -143,6 +154,7 @@
     padding: 8px 21px;
     color: white;
     background-color: #989a9d;
+
     border-radius: 6px;
   }
   .swiper-button-next:after {
@@ -150,6 +162,27 @@
   }
   .swiper-button-prev:after {
     font-size: 35px;
+  }
+  .imgbanner {
+    margin: auto;
+    height: 40%;
+    width: 40%;
+  }
+  .button-banner {
+    /* padding: 5px;
+    height: fit-content; */
+  }
+  .header {
+    margin: 20px 0;
+    padding: 00px 0 0 10px;
+  }
+  .banner img {
+    max-width: none;
+    width: 71px;
+  }
+  .image-container {
+    display: flex;
+    padding-bottom: 30px;
   }
 }
 @keyframes slideIn {
