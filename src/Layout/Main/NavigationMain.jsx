@@ -6,12 +6,12 @@ import { CiMenuFries } from "react-icons/ci"
 import { NavLink } from "react-router-dom"
 // eslint-disable-next-line react/prop-types, no-unused-vars
 const Navigation = ({ language, onLanguageChange }) => {
-  const countries = [
-    { name: "E", independent: false },
-    { name: "V", independent: false },
-    { name: "C", independent: false }
-  ]
-  const [inputValue, setInputValue] = useState("")
+  // const countries = [
+  //   { name: "E", independent: false },
+  //   { name: "V", independent: false },
+  //   { name: "C", independent: false }
+  // ]
+  // const [inputValue, setInputValue] = useState("")
   const [selected, setSelected] = useState(language)
   const [open, setOpen] = useState(false)
   const handleLanguageChange = selected => {
