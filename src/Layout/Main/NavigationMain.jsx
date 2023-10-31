@@ -4,8 +4,18 @@ import { AiFillCaretDown, AiOutlineGlobal } from "react-icons/ai"
 import { FaTimes } from "react-icons/fa"
 import { CiMenuFries } from "react-icons/ci"
 import { NavLink } from "react-router-dom"
+import { AiOutlineClose, AiOutlineLine } from "react-icons/ai"
 // eslint-disable-next-line react/prop-types, no-unused-vars
 const Navigation = ({ language, onLanguageChange }) => {
+  const [isExpanded, setExpanded] = useState(false)
+
+  const expandSearch = () => {
+    setExpanded(true)
+  }
+
+  const collapseSearch = () => {
+    setExpanded(false)
+  }
   // const countries = [
   //   { name: "E", independent: false },
   //   { name: "V", independent: false },
@@ -49,28 +59,30 @@ const Navigation = ({ language, onLanguageChange }) => {
 
         <div className=" flex z-50 text-white lg:py-5 py-4" path="/">
           <div className=" lg:flex md:flex sm:flex flex-1 items-center justify-end font-normal hidden xl:text-xl lg:text-lg font-poppins ">
-            <ul className=" flex xl:gap-16 lg:gap-10">
-              <li>
-                <NavLink to="/" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
-                  Movies
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
-                  Series
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
-                  Top
-                </NavLink>
-              </li>
-            </ul>
+            {!isExpanded ? (
+              <ul className=" flex xl:gap-16 lg:gap-10">
+                <li>
+                  <NavLink to="/" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
+                    Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
+                    Movies
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
+                    Series
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/" className={({ isActive }) => (isActive ? activeLink : normalLink)}>
+                    Top
+                  </NavLink>
+                </li>
+              </ul>
+            ) : null}
           </div>
           <div>{click && content}</div>
           <button className="block sm:hidden transition text-2xl" onClick={handleClick}>
@@ -113,7 +125,36 @@ const Navigation = ({ language, onLanguageChange }) => {
           </ul> */}
         </div>
         <div className="my-auto">
-          <img className="-mr-3 xl:-mr-3 xl:w-full lg:w-full w-[75%]" src="../../assets/img/icon/search.png" alt="" />
+          {/* <img className="-mr-3 xl:-mr-3 xl:w-full lg:w-full w-[75%]" src="../../assets/img/icon/search.png" alt="" /> */}
+          <div className="flex items-center">
+            <div className="relative">
+              {!isExpanded ? (
+                <div className="cursor-pointer" onClick={expandSearch}>
+                  <img
+                    className="-mr-3 xl:-mr-3 xl:w-full lg:w-full w-[75%]"
+                    src="../../assets/img/icon/search.png"
+                    alt="Search Icon"
+                  />
+                </div>
+              ) : null}
+              {isExpanded ? (
+                <div className="flex items-center">
+                  <img className="w-[3%] " src="../../assets/img/icon/search.png" alt="Search Icon" />
+                  <input
+                    type="text"
+                    className="border-none border-black rounded-md p-2 bg-black w-[750px] text-lg text-gray-300 ml-2 focus:outline-none px-5"
+                    placeholder="Movie/series name or actor/director name"
+                  />
+                  <div className="cursor-pointer" onClick={collapseSearch}>
+                    <AiOutlineClose className=" text-[#989A9D] text-4xl"></AiOutlineClose>
+                  </div>
+                  <div style={{ transform: "rotate(90deg)" }} className="text-[#989A9D] text-4xl ml-3">
+                    <AiOutlineLine />
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </div>
         </div>
         <button className="text-white bg-bgrbtsignin font-semibold lg:px-5 md:px-4 sm:px-3 px-4 rounded-md lg:h-[45px] md:h-[45px] sm:h-[30px] h-[30px] xl:text-base lg:text-base text-xs ">
           Buy for 50$
