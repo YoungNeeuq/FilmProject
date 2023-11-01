@@ -12,6 +12,7 @@ const Navigation = ({ language, onLanguageChange }) => {
   const [open, setOpen] = useState(false)
   const handleLanguageChange = selected => {
     onLanguageChange(selected)
+    console.log(selected)
   }
   return (
     <div className=" flex justify-between bg-black fixed top-0 left-0 right-0 lg:p-6 md:p-4 sm:p-2 p-1 z-20 lg:h-24 md:h-20 h-16">

@@ -6,26 +6,28 @@ import { CiMenuFries } from "react-icons/ci"
 import { NavLink } from "react-router-dom"
 import { AiOutlineClose, AiOutlineLine } from "react-icons/ai"
 // eslint-disable-next-line react/prop-types, no-unused-vars
-const Navigation = ({ language, onLanguageChange }) => {
-  const [isExpanded, setExpanded] = useState(false)
-
+const Navigation = ({ language, onLanguageChange, search, handlesearch }) => {
+  const [isExpanded, setExpanded] = useState(search)
   const expandSearch = () => {
     setExpanded(true)
+    handlesearch(true)
   }
-
   const collapseSearch = () => {
     setExpanded(false)
+    handlesearch(false)
   }
+
   // const countries = [
   //   { name: "E", independent: false },
   //   { name: "V", independent: false },
   //   { name: "C", independent: false }
   // ]
   // const [inputValue, setInputValue] = useState("")
+  // eslint-disable-next-line no-unused-vars
   const [selected, setSelected] = useState(language)
   const [open, setOpen] = useState(false)
-  const handleLanguageChange = selected => {
-    onLanguageChange(selected)
+  const handleLanguageChange = sea => {
+    onLanguageChange(sea)
   }
 
   const [click, setClick] = useState(false)
@@ -139,10 +141,10 @@ const Navigation = ({ language, onLanguageChange }) => {
               ) : null}
               {isExpanded ? (
                 <div className="flex items-center">
-                  <img className="w-[3%] " src="../../assets/img/icon/search.png" alt="Search Icon" />
+                  <img className="lg:w-[3%] xl:w-[2%] " src="../../assets/img/icon/search.png" alt="Search Icon" />
                   <input
                     type="text"
-                    className="border-none border-black rounded-md p-2 bg-black w-[750px] text-lg text-gray-300 ml-2 focus:outline-none px-5"
+                    className="border-none border-black rounded-md p-2 bg-black lg:w-[750px] text-lg text-gray-300 ml-2 focus:outline-none px-5"
                     placeholder="Movie/series name or actor/director name"
                   />
                   <div className="cursor-pointer" onClick={collapseSearch}>

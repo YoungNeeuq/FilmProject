@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
 import Slider from "react-slick"
 import axios from "axios"
-import ReactPlayer from "react-player"
 import "./Main.css" // import CSS file
 import { BsChevronDown } from "react-icons/bs"
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // import { faCaretRight } from "@fortawesome/free-solid-svg-icons"
+import { faPlay, faForwardStep } from "@fortawesome/free-solid-svg-icons"
 const ContentMain = () => {
   const [movies, setMovies] = useState([])
   const [series, setSeries] = useState([])
@@ -74,6 +74,7 @@ const ContentMain = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
+    margin: 45,
     responsive: [
       {
         breakpoint: 550,
@@ -85,7 +86,7 @@ const ContentMain = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 6,
+          slidesToShow: 5,
           slidesToScroll: 1
         }
       },
@@ -210,24 +211,36 @@ const ContentMain = () => {
       {/* End bar */}
 
       {/* Start video */}
-      {/* <div className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2">
+      <div className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 watching">
         <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-8 lg:mb-5 md:mb-4 mb-3">
           Continue Watching
         </h4>
         <Slider {...settingsvideo}>
           {videos.map(video => (
-            <div className="player-wrapper" key={video.id}>
-              <ReactPlayer
-                className="react-player rounded-xl"
-                url={video.image}
-                width="100%"
-                height="350px"
-                controls={true}
-              />
+            <div
+              className=" before: self-center xl:h-[190px] lg:h[250px] md:h-[200px] h-[100px] hover:scale-110 transition-transform z-10 relative"
+              key={video.id}
+            >
+              <img src={video.image} className=" rounded-lg w-full h-full object-cover" alt={`video-${video.id}`} />
+              <div className="absolute top-2 left-2 flex flex-col items-center justify-center bg-opacity-50 text-white">
+                <div className=" mb-2 font-bold xl:text-lg lg:text-base text-[8px]">{video.title}</div>
+              </div>
+              <div className=" flex absolute top-1/2 left-1/2 -translate-x-1/2 flex-col items-center justify-center bg-opacity-50 text-white z-10">
+                <FontAwesomeIcon icon={faPlay} size="2xl" style={{ color: "#ffffff" }} />
+              </div>
+              <div className=" flex absolute top-[44%] left-[49%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-7 border-2 cursor-pointer"></div>
+              <div className=" flex absolute top-[52%] left-[33%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-50 text-white z-10 cursor-pointer">
+                <FontAwesomeIcon icon={faForwardStep} size="lg" style={{ color: "#ffffff" }} rotation={180} />
+              </div>
+              <div className=" flex absolute top-[49%] left-[33%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-4 cursor-pointer border-2"></div>
+              <div className=" flex absolute top-[52%] right-[30%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-50 text-white z-10 cursor-pointer">
+                <FontAwesomeIcon icon={faForwardStep} size="lg" style={{ color: "#ffffff" }} />
+              </div>
+              <div className=" flex absolute top-[49%] right-[24%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-4 cursor-pointer border-2"></div>
             </div>
           ))}
         </Slider>
-      </div> */}
+      </div>
       {/* End video */}
 
       {/* Start movies */}

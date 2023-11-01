@@ -7,6 +7,9 @@
 .icon .slick-slider .slick-list .slick-track .slick-slide {
   margin-right: -25px !important;
 }
+.watching .slick-slider .slick-list .slick-track .slick-slide {
+  margin-right: 45px !important;
+}
 .icon .slick-slider button {
   display: none !important;
 }
