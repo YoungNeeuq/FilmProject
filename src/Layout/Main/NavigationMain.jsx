@@ -141,7 +141,7 @@ const Navigation = ({ language, onLanguageChange, search, handlesearch }) => {
               ) : null}
               {isExpanded ? (
                 <div className="flex items-center">
-                  <img className="lg:w-[3%] xl:w-[2%] " src="../../assets/img/icon/search.png" alt="Search Icon" />
+                  <img className="lg:w-[4%] xl:w-[3%] " src="../../assets/img/icon/search.png" alt="Search Icon" />
                   <input
                     type="text"
                     className="border-none border-black rounded-md p-2 bg-black lg:w-[750px] text-lg text-gray-300 ml-2 focus:outline-none px-5"

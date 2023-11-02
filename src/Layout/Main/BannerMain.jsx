@@ -11,7 +11,7 @@ import { AiOutlineCaretRight } from "react-icons/ai"
 // eslint-disable-next-line react/prop-types
 const BannerMain = ({ search }) => {
   return (
-    <div className="xl:mt-24 lg:mt-24 mt-16">
+    <div className="xl:mt-24 lg:mt-24 mt-16 pt-10">
       {!search ? (
         <Swiper
           effect={"coverflow"}
@@ -21,6 +21,7 @@ const BannerMain = ({ search }) => {
           loop={true}
           slidesPerView={"auto"}
           cubeEffect={true}
+          spaceBetween={100}
           coverflowEffect={{
             rotate: 0,
             stretch: 0,
@@ -38,8 +39,8 @@ const BannerMain = ({ search }) => {
           breakpoints={{
             // Custom breakpoints here
             640: {
-              slidesPerView: 10,
-              spaceBetween: 0
+              slidesPerView: 3,
+              spaceBetween: -100
             },
             768: {
               slidesPerView: 3,
@@ -50,38 +51,41 @@ const BannerMain = ({ search }) => {
             }
           }}
         >
-          <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+          <SwiperSlide>
+            <div className=" w-fit">
+              <img className="shadow-lg" src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+              {/* <div className="-z- absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#772462] rounded-lg blur-lg opacity-95 w-[102%] lg:-top-2 lg:h-[100%] h-[100%] top-2 mx-auto"></div> */}
+            </div>
           </SwiperSlide>
           <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+            <img src="../../assets/img/mainpage/banner/avatar.png" alt="slide_image" />
           </SwiperSlide>
           <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+            <img src="../../assets/img/mainpage/banner/f8.png" alt="slide_image" />
           </SwiperSlide>
           <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+            <img src="../../assets/img/mainpage/banner/ratched.png" className=" rounded-3xl" alt="slide_image" />
           </SwiperSlide>
           <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+            <img src="../../assets/img/mainpage/banner/you.png" className=" rounded-3xl" alt="slide_image" />
           </SwiperSlide>
           <SwiperSlide className="w-fit">
             <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
           </SwiperSlide>
           <SwiperSlide className="w-fit ">
-            <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+            <img src="../../assets/img/mainpage/banner/ratched.png" className=" rounded-3xl" alt="slide_image" />
+          </SwiperSlide>
+          <SwiperSlide className="w-fit">
+            <img src="../../assets/img/mainpage/banner/you.png" className=" rounded-3xl" alt="slide_image" />
+          </SwiperSlide>
+          <SwiperSlide className="w-fit">
+            <img src="../../assets/img/mainpage/banner/f8.png" alt="slide_image" />
           </SwiperSlide>
           <SwiperSlide className="w-fit">
             <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
           </SwiperSlide>
           <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
-          </SwiperSlide>
-          <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
-          </SwiperSlide>
-          <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+            <img src="../../assets/img/mainpage/banner/avatar.png" alt="slide_image" />
           </SwiperSlide>
 
           <div className="slider-controler">

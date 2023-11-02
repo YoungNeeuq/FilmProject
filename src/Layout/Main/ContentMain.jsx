@@ -6,6 +6,7 @@ import { BsChevronDown } from "react-icons/bs"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // import { faCaretRight } from "@fortawesome/free-solid-svg-icons"
 import { faPlay, faForwardStep } from "@fortawesome/free-solid-svg-icons"
+import Modal from "react-modal"
 const ContentMain = () => {
   const [movies, setMovies] = useState([])
   const [series, setSeries] = useState([])
@@ -39,6 +40,8 @@ const ContentMain = () => {
     })
   }, [])
   const settingsicon = {
+    draggable: true,
+    swipe: true,
     dots: false,
     infinite: true,
     speed: 500,
@@ -163,10 +166,22 @@ const ContentMain = () => {
       }
     ]
   }
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+
+  const openModal = () => {
+    setModalIsOpen(true)
+  }
+
+  const closeModal = () => {
+    setModalIsOpen(false)
+  }
   return (
     <div className="bg-[#040714] rounded-lg xl:mx-16 lg:mx-12 md:mx-5 mx-3 xl:mt-28 lg:mt-10 mt-3 overflow-hidden ">
       {/* Start bar */}
-      <div className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 mb-8 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 icon pt-7">
+      <div
+        className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 mb-8 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 icon pt-7"
+        draggable="true"
+      >
         <Slider {...settingsicon}>
           <div className="custom-flex">
             <img className="xl:w-[14%] lg:w-[14%] w-[16px]" src="../../assets/img/icon/ghim.png" alt="" />
@@ -211,10 +226,14 @@ const ContentMain = () => {
       {/* End bar */}
 
       {/* Start video */}
-      <div className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 watching">
+      <div
+        className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 watching "
+        draggable="true"
+      >
         <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-8 lg:mb-5 md:mb-4 mb-3">
           Continue Watching
         </h4>
+
         <Slider {...settingsvideo}>
           {videos.map(video => (
             <div
@@ -225,26 +244,56 @@ const ContentMain = () => {
               <div className="absolute top-2 left-2 flex flex-col items-center justify-center bg-opacity-50 text-white">
                 <div className=" mb-2 font-bold xl:text-lg lg:text-base text-[8px]">{video.title}</div>
               </div>
-              <div className=" flex absolute top-1/2 left-1/2 -translate-x-1/2 flex-col items-center justify-center bg-opacity-50 text-white z-10">
+              <div
+                className=" flex absolute top-1/2 left-1/2 -translate-x-1/2 flex-col items-center justify-center bg-opacity-50 text-white z-10 cursor-pointer"
+                onClick={openModal}
+              >
                 <FontAwesomeIcon icon={faPlay} size="2xl" style={{ color: "#ffffff" }} />
               </div>
-              <div className=" flex absolute top-[44%] left-[49%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-7 border-2 cursor-pointer"></div>
+              <div className=" flex absolute top-[43%] left-[49%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-7 border-2 border-opacity-60 border-[#d5d6d8] cursor-pointer"></div>
               <div className=" flex absolute top-[52%] left-[33%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-50 text-white z-10 cursor-pointer">
                 <FontAwesomeIcon icon={faForwardStep} size="lg" style={{ color: "#ffffff" }} rotation={180} />
               </div>
-              <div className=" flex absolute top-[49%] left-[33%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-4 cursor-pointer border-2"></div>
+              <div className=" flex absolute top-[49%] left-[33%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-4 cursor-pointer border-2 border-opacity-60 border-[#d5d6d8]"></div>
               <div className=" flex absolute top-[52%] right-[30%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-50 text-white z-10 cursor-pointer">
                 <FontAwesomeIcon icon={faForwardStep} size="lg" style={{ color: "#ffffff" }} />
               </div>
-              <div className=" flex absolute top-[49%] right-[24%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-4 cursor-pointer border-2"></div>
+              <div className=" flex absolute top-[49%] right-[23%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-4 cursor-pointer border-2 border-opacity-60 border-[#d5d6d8]"></div>
+              <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Video Modal">
+                <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+                  <iframe
+                    title="YouTube Video"
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/watch?v=rvje5oblrLw"
+                    frameBorder="0"
+                    allowFullScreen
+                  />
+                </div>
+              </Modal>
             </div>
           ))}
         </Slider>
+        <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Video Modal">
+          <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+            <iframe
+              title="YouTube Video"
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/watch?v=rvje5oblrLw"
+              frameBorder="0"
+              allowFullScreen
+            />
+          </div>
+        </Modal>
       </div>
       {/* End video */}
 
       {/* Start movies */}
-      <div className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2">
+      <div
+        className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 "
+        draggable="true"
+      >
         <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-8 lg:mb-5 md:mb-4 mb-3">
           Movies
         </h4>
