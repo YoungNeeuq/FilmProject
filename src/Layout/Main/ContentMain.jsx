@@ -4,6 +4,10 @@ import axios from "axios"
 import "./Main.css" // import CSS file
 import { BsChevronDown } from "react-icons/bs"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Carousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
+import { motion } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 // import { faCaretRight } from "@fortawesome/free-solid-svg-icons"
 import { faPlay, faForwardStep } from "@fortawesome/free-solid-svg-icons"
 import Modal from "react-modal"
@@ -13,159 +17,60 @@ const ContentMain = () => {
   const [cartoons, setCartoons] = useState([])
   const [weeklytops, setWeeklytops] = useState([])
   const [videos, setVideos] = useState([])
+  const [isVisible, setIsVisible] = useState(false)
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: "-100px 0px"
+  })
+
+  // Khi phần tử nằm trong tầm nhìn, setIsVisible sẽ được đặt thành true
+  if (inView) {
+    setIsVisible(true)
+  }
   useEffect(() => {
-    axios.get("https://652604c767cfb1e59ce7d148.mockapi.io/Content").then(response => {
-      setMovies([])
-      setSeries([])
-      setCartoons([])
-      response.data.map(data => {
-        if (data.page === "main") {
-          if (data.type === "movies") {
-            setMovies(old => [...old, data])
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("https://652604c767cfb1e59ce7d148.mockapi.io/Content")
+        const data = response.data
+        const moviesData = []
+        const seriesData = []
+        const cartoonsData = []
+        const weeklytopsData = []
+        const videosData = []
+
+        data.forEach(item => {
+          if (item.page === "main") {
+            if (item.type === "movies") {
+              moviesData.push(item)
+            }
+            if (item.type === "series") {
+              seriesData.push(item)
+            }
+            if (item.type === "cartoons") {
+              cartoonsData.push(item)
+            }
+            if (item.type === "weeklytop") {
+              weeklytopsData.push(item)
+            }
+            if (item.type === "video") {
+              videosData.push(item)
+            }
           }
-          if (data.type === "series") {
-            setSeries(old => [...old, data])
-          }
-          if (data.type === "cartoons") {
-            setCartoons(old => [...old, data])
-          }
-          if (data.type === "weeklytop") {
-            setWeeklytops(old => [...old, data])
-          }
-          if (data.type === "video") {
-            setVideos(old => [...old, data])
-          }
-        }
-      })
-    })
+        })
+
+        setMovies(moviesData)
+        setSeries(seriesData)
+        setCartoons(cartoonsData)
+        setWeeklytops(weeklytopsData)
+        setVideos(videosData)
+      } catch (error) {
+        // Xử lý lỗi tại đây
+      }
+    }
+
+    fetchData()
   }, [])
-  const settingsicon = {
-    draggable: true,
-    swipe: true,
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 7,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 550,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 6,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 1,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  }
-  const settingsvideo = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    margin: 45,
-    responsive: [
-      {
-        breakpoint: 550,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 1,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  }
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 7,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    responsive: [
-      {
-        breakpoint: 550,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 6,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 1,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  }
-  const settingsweekly = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    responsive: [
-      {
-        breakpoint: 550,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 6,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 1,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  }
+
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
   const openModal = () => {
@@ -175,154 +80,261 @@ const ContentMain = () => {
   const closeModal = () => {
     setModalIsOpen(false)
   }
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 1024 },
+      items: 6,
+      slidesToSlide: 2
+    },
+    desktop: {
+      breakpoint: { max: 1024, min: 800 },
+      items: 4
+    },
+    tablet: {
+      breakpoint: { max: 800, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 4.5
+    }
+  }
+  const responsivew = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 1024 },
+      items: 5,
+      slidesToSlide: 2
+    },
+    desktop: {
+      breakpoint: { max: 1024, min: 800 },
+      items: 4
+    },
+    tablet: {
+      breakpoint: { max: 800, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 4
+    }
+  }
+  const responsivev = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 1024 },
+      items: 3.5,
+      slidesToSlide: 2
+    },
+    desktop: {
+      breakpoint: { max: 1024, min: 800 },
+      items: 3
+    },
+    tablet: {
+      breakpoint: { max: 800, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 2.3
+    }
+  }
+  const responsivei = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 1024 },
+      items: 8,
+      slidesToSlide: 2
+    },
+    desktop: {
+      breakpoint: { max: 1024, min: 800 },
+      items: 3
+    },
+    tablet: {
+      breakpoint: { max: 800, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 4
+    }
+  }
+
   return (
-    <div className="bg-[#040714] rounded-lg xl:mx-16 lg:mx-12 md:mx-5 mx-3 xl:mt-28 lg:mt-10 mt-3 overflow-hidden ">
+    <div
+      className="bg-[#040714] rounded-lg xl:mx-16 lg:mx-12 md:mx-5 mx-3 xl:mt-28 lg:mt-10 mt-3 overflow-hidden "
+      ref={ref}
+    >
       {/* Start bar */}
-      <div
-        className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 mb-8 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 icon pt-7"
-        draggable="true"
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 1 }}
       >
-        <Slider {...settingsicon}>
-          <div className="custom-flex">
-            <img className="xl:w-[14%] lg:w-[14%] w-[16px]" src="../../assets/img/icon/ghim.png" alt="" />
-            <p className="text-white xl:text-base lg:text-base text-[11px]">Looked</p>
-          </div>
-          <div className="custom-flex">
-            <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/movies.png" alt="" />
-            <p className="text-white xl:text-base lg:text-base text-[11px]">Movies</p>
-          </div>
+        <div
+          className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 mb-8 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 icon pt-7"
+          id="icon"
+          draggable="true"
+        >
+          <Carousel showDots={true} responsive={responsivei}>
+            <div className="custom-flex">
+              <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/movies.png" alt="" />
+              <p className="text-white xl:text-base lg:text-base text-[11px]">Movies</p>
+            </div>
 
-          <div className="custom-flex">
-            <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/video.png" alt="" />
-            <p className="text-white mb-1 xl:text-base lg:text-base text-[11px]">Series</p>
-          </div>
+            <div className="custom-flex">
+              <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/video.png" alt="" />
+              <p className="text-white mb-1 xl:text-base lg:text-base text-[11px]">Series</p>
+            </div>
 
-          <div className="custom-flex">
-            <img className="xl:w-[14%] lg:w-[14%] w-[16px]" src="../../assets/img/icon/popcorn.png" alt="" />
-            <p className="text-white xl:text-base lg:text-base text-[11px]">Cartoons</p>
-          </div>
+            <div className="custom-flex">
+              <img className="xl:w-[14%] lg:w-[14%] w-[16px]" src="../../assets/img/icon/popcorn.png" alt="" />
+              <p className="text-white xl:text-base lg:text-base text-[11px]">Cartoons</p>
+            </div>
 
-          <div className="custom-flex">
-            <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/star.png" alt="" />
-            <p className="text-white xl:text-base lg:text-base text-[11px]">Top</p>
-          </div>
+            <div className="custom-flex">
+              <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/star.png" alt="" />
+              <p className="text-white xl:text-base lg:text-base text-[11px]">Top</p>
+            </div>
 
-          <div className="custom-flex">
-            <img className="xl:w-[14%] lg:w-[14%] w-[16px]" src="../../assets/img/icon/dowload.png" alt="" />
-            <p className="text-white xl:text-base lg:text-base text-[11px]">Download</p>
-          </div>
+            <div className="custom-flex">
+              <img className="xl:w-[14%] lg:w-[14%] w-[16px]" src="../../assets/img/icon/dowload.png" alt="" />
+              <p className="text-white xl:text-base lg:text-base text-[11px]">Download</p>
+            </div>
 
-          <div className="custom-flex">
-            <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/tv.png" alt="" />
-            <p className="text-white xl:text-base lg:text-base text-[11px]">New</p>
-          </div>
+            <div className="custom-flex">
+              <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/tv.png" alt="" />
+              <p className="text-white xl:text-base lg:text-base text-[11px]">New</p>
+            </div>
 
-          <div className="custom-flex">
-            <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/love.png" alt="" />
-            <p className="text-white xl:text-base lg:text-base text-[11px]">Like</p>
-          </div>
-        </Slider>
-      </div>
+            <div className="custom-flex">
+              <img className="xl:w-[14%] lg:w-[16%] w-[16px]" src="../../assets/img/icon/love.png" alt="" />
+              <p className="text-white xl:text-base lg:text-base text-[11px]">Like</p>
+            </div>
+            <div className="custom-flex cursor-pointer">
+              <img className="xl:w-[14%] lg:w-[14%] w-[16px]" src="../../assets/img/icon/ghim.png" alt="" />
+              <p className="text-white xl:text-base lg:text-base text-[11px]">Looked</p>
+            </div>
+          </Carousel>
+        </div>
+      </motion.div>
       {/* End bar */}
 
       {/* Start video */}
+
       <div
-        className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 watching "
+        className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 watching"
         draggable="true"
       >
-        <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-8 lg:mb-5 md:mb-4 mb-3">
-          Continue Watching
-        </h4>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 1 }}
+        >
+          <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-4 lg:mb-3 md:mb-2 mb-2">
+            Continue Watching
+          </h4>
 
-        <Slider {...settingsvideo}>
-          {videos.map(video => (
-            <div
-              className=" before: self-center xl:h-[190px] lg:h[250px] md:h-[200px] h-[100px] hover:scale-110 transition-transform z-10 relative"
-              key={video.id}
-            >
-              <img src={video.image} className=" rounded-lg w-full h-full object-cover" alt={`video-${video.id}`} />
-              <div className="absolute top-2 left-2 flex flex-col items-center justify-center bg-opacity-50 text-white">
-                <div className=" mb-2 font-bold xl:text-lg lg:text-base text-[8px]">{video.title}</div>
-              </div>
+          <Carousel showDots={true} responsive={responsivev}>
+            {videos.map(video => (
               <div
-                className=" flex absolute top-1/2 left-1/2 -translate-x-1/2 flex-col items-center justify-center bg-opacity-50 text-white z-10 cursor-pointer"
-                onClick={openModal}
+                className=" before: self-center xl:h-[250px] lg:h[250px] md:h-[200px] h-[100px] hover:scale-110 transition-transform z-10 relative xl:mx-6 mx-2"
+                key={video.id}
               >
-                <FontAwesomeIcon icon={faPlay} size="2xl" style={{ color: "#ffffff" }} />
-              </div>
-              <div className=" flex absolute top-[43%] left-[49%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-7 border-2 border-opacity-60 border-[#d5d6d8] cursor-pointer"></div>
-              <div className=" flex absolute top-[52%] left-[33%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-50 text-white z-10 cursor-pointer">
-                <FontAwesomeIcon icon={faForwardStep} size="lg" style={{ color: "#ffffff" }} rotation={180} />
-              </div>
-              <div className=" flex absolute top-[49%] left-[33%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-4 cursor-pointer border-2 border-opacity-60 border-[#d5d6d8]"></div>
-              <div className=" flex absolute top-[52%] right-[30%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-50 text-white z-10 cursor-pointer">
-                <FontAwesomeIcon icon={faForwardStep} size="lg" style={{ color: "#ffffff" }} />
-              </div>
-              <div className=" flex absolute top-[49%] right-[23%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-4 cursor-pointer border-2 border-opacity-60 border-[#d5d6d8]"></div>
-              <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Video Modal">
-                <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
-                  <iframe
-                    title="YouTube Video"
-                    width="100%"
-                    height="100%"
-                    src="https://www.youtube.com/watch?v=rvje5oblrLw"
-                    frameBorder="0"
-                    allowFullScreen
-                  />
+                <img src={video.image} className=" rounded-lg w-full h-full object-cover" alt={`video-${video.id}`} />
+                <div className="absolute top-2 left-2 flex flex-col items-center justify-center bg-opacity-50 text-white">
+                  <div className=" mb-2 font-bold xl:text-lg lg:text-base text-[8px]">{video.title}</div>
                 </div>
-              </Modal>
+                <div
+                  className=" flex absolute top-[49%] left-1/2 -translate-x-1/2 flex-col items-center justify-center bg-opacity-50 text-white z-10 cursor-pointer"
+                  onClick={openModal}
+                >
+                  <FontAwesomeIcon icon={faPlay} size="2xl" style={{ color: "#ffffff" }} />
+                </div>
+                <div className=" flex absolute top-[43%] left-[49%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-7 border-2 border-opacity-60 border-[#d5d6d8] cursor-pointer"></div>
+                <div className=" flex absolute top-[52%] left-[33%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-50 text-white z-10 cursor-pointer">
+                  <FontAwesomeIcon icon={faForwardStep} size="lg" style={{ color: "#ffffff" }} rotation={180} />
+                </div>
+                <div className=" flex absolute top-[49%] left-[33%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-4 cursor-pointer border-2 border-opacity-60 border-[#d5d6d8]"></div>
+                <div className=" flex absolute top-[52%] right-[29%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-50 text-white z-10 cursor-pointer">
+                  <FontAwesomeIcon icon={faForwardStep} size="lg" style={{ color: "#ffffff" }} />
+                </div>
+                <div className=" flex absolute top-[49%] right-[23%] -translate-x-1/2 flex-col items-center justify-center bg-opacity-30 text-white rounded-full bg-white p-4 cursor-pointer border-2 border-opacity-60 border-[#d5d6d8]"></div>
+                <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Video Modal">
+                  <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+                    <iframe
+                      title="YouTube Video"
+                      width="100%"
+                      height="100%"
+                      src="https://www.youtube.com/watch?v=rvje5oblrLw"
+                      frameBorder="0"
+                      allowFullScreen
+                    />
+                  </div>
+                </Modal>
+              </div>
+            ))}
+          </Carousel>
+          <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Video Modal">
+            <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+              <iframe
+                title="YouTube Video"
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/watch?v=rvje5oblrLw"
+                frameBorder="0"
+                allowFullScreen
+              />
             </div>
-          ))}
-        </Slider>
-        <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Video Modal">
-          <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
-            <iframe
-              title="YouTube Video"
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/watch?v=rvje5oblrLw"
-              frameBorder="0"
-              allowFullScreen
-            />
-          </div>
-        </Modal>
+          </Modal>
+        </motion.div>
       </div>
       {/* End video */}
 
       {/* Start movies */}
+
       <div
         className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 "
         draggable="true"
       >
-        <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-8 lg:mb-5 md:mb-4 mb-3">
-          Movies
-        </h4>
-        <Slider {...settings}>
-          {movies.map(movie => (
-            <div
-              className=" before: self-center xl:h-[320px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10 relative group"
-              key={movie.id}
-            >
-              <img src={movie.image} className=" rounded-lg w-full h-full object-cover" alt={`movie-${movie.id}`} />
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white opacity-0 group-hover:opacity-100">
-                <div className="animate-slideIn mb-2 font-bold xl:text-base lg:text-base text-[8px]">{movie.title}</div>
-                <div className="animate-slideIn xl:text-base lg:text-base text-[6px]">{movie.time}</div>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 1 }}
+        >
+          <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-4 lg:mb-3 md:mb-2 mb-2">
+            Movies
+          </h4>
+          <Carousel showDots={true} responsive={responsive}>
+            {movies.map(movie => (
+              <div
+                className=" before: self-center xl:h-[330px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10 relative group xl:mx-4 mx-1"
+                key={movie.id}
+              >
+                <img src={movie.image} className=" rounded-lg w-full h-full object-cover" alt={`movie-${movie.id}`} />
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white opacity-0 group-hover:opacity-100">
+                  <div className="animate-slideIn mb-2 font-bold xl:text-base lg:text-base text-[8px]">
+                    {movie.title}
+                  </div>
+                  <div className="animate-slideIn xl:text-base lg:text-base text-[6px]">{movie.time}</div>
+                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
+            ))}
+          </Carousel>
+        </motion.div>
       </div>
       {/* End movies */}
 
       {/* Start series */}
       <div className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb- lg:mb-16 md:mb-12 mb-2 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 z-10">
-        <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-8 lg:mb-5 md:mb-4 mb-3">
+        <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-4 lg:mb-3 md:mb-2 mb-2">
           Series
         </h4>
-        <Slider {...settings}>
+        <Carousel showDots={true} responsive={responsive}>
           {series.map(serie => (
             <div
-              className=" self-center xl:h-[320px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10 relative group"
+              className=" self-center xl:h-[330px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10 relative group xl:mx-4 mx-1"
               key={serie.id}
             >
               <img src={serie.image} className=" rounded-lg w-full h-full object-cover" alt={`serie-${serie.id}`} />
@@ -332,7 +344,7 @@ const ContentMain = () => {
               </div>
             </div>
           ))}
-        </Slider>
+        </Carousel>
       </div>
       {/* End series */}
 
@@ -387,13 +399,13 @@ const ContentMain = () => {
 
       {/* Start cartoons */}
       <div className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb- lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2">
-        <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-8 lg:mb-5 md:mb-4 mb-3">
+        <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-4 lg:mb-3 md:mb-2 mb-2">
           Cartoons
         </h4>
-        <Slider {...settings}>
+        <Carousel showDots={true} responsive={responsive}>
           {cartoons.map(cartoon => (
             <div
-              className=" self-center xl:h-[320px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10 w-2/3 relative group"
+              className=" self-center xl:h-[320px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10 relative group xl:mx-4 mx-1"
               key={cartoon.id}
             >
               <img
@@ -409,19 +421,19 @@ const ContentMain = () => {
               </div>
             </div>
           ))}
-        </Slider>
+        </Carousel>
       </div>
       {/* End cartoons */}
 
       {/* Start weekly top */}
       <div className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb- lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 weeklytop">
-        <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-8 lg:mb-5 md:mb-4 mb-3">
+        <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-4 lg:mb-3 md:mb-2 mb-2">
           Weekly Top
         </h4>
-        <Slider {...settingsweekly}>
+        <Carousel showDots={true} responsive={responsivew}>
           {weeklytops.map(weeklytop => (
             <div
-              className=" self-center xl:h-[350px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10 mb-2  relative group"
+              className=" self-center xl:h-[350px] lg:h[250px] md:h-[200px] h-[140px] hover:scale-110 transition-transform z-10 mb-2  relative group xl:mx-[40px] mx-3"
               key={weeklytop.id}
             >
               <img
@@ -442,10 +454,10 @@ const ContentMain = () => {
               </p>
             </div>
           ))}
-        </Slider>
+        </Carousel>
       </div>
       {/* End weekly top */}
-      <div className=" flex gap-2  image-container relative xl:mx-20 mx-3">
+      <div className=" flex gap-2  image-container relative xl:mx-20 mx-3 xl:max-w-full max-w-[113px]">
         <img className="z-10" src="../../assets/img/mainpage/1.png" alt="" />
         <img className="z-10" src="../../assets/img/mainpage/2.png" alt="" />
         <img className="z-10" src="../../assets/img/mainpage/3.png" alt="" />
