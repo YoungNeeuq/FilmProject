@@ -96,12 +96,16 @@ const Footer = ({ language, onLanguageChange }) => {
               </p>
               <AiFillCaretDown lg:size={20} md:size={17} sm:size={13} size={10} className={`${open && "rotate-180"}`} />
             </div>
-            <ul className={`bg-white text-black rounded-md overflow-y-auto ${open ? "max-h-60" : "max-h-0"} `}>
+            <ul
+              className={`bg-white text-black rounded-md mt-1 overflow-y-auto ${open ? "max-h-60" : "max-h-0"}  ${
+                open ? "border" : "border-0"
+              }`}
+            >
               {countries?.map(country => (
                 <li
                   key={country?.name}
-                  className={`p-2 lg:text-sm text-[7px] hover:bg-sky-600 hover:text-white
-            ${country?.name?.toLowerCase() === selected?.toLowerCase() && "bg-sky-600 text-white"}
+                  className={`p-2 lg:text-sm text-[7px] hover:bg-black hover:text-white
+            ${country?.name?.toLowerCase() === selected?.toLowerCase() && "bg-black text-white"}
             ${country?.name?.toLowerCase().startsWith(inputValue) ? "block" : "hidden"}`}
                   onClick={() => {
                     if (country?.name?.toLowerCase() !== selected.toLowerCase()) {
