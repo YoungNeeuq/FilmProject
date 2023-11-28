@@ -34,12 +34,16 @@ const Navigation = ({ language, onLanguageChange }) => {
             {selected ? (selected?.length > 25 ? selected?.substring(0, 25) + "..." : selected) : language}
             <AiFillCaretDown size={20} className={`${open && "rotate-180"}`} />
           </div>
-          <ul className={`bg-white rounded-md mt-2 overflow-y-auto ${open ? "max-h-60" : "max-h-0"} `}>
+          <ul
+            className={`bg-white border-1 border-black rounded-md mt-2 overflow-y-auto ${
+              open ? "max-h-60" : "max-h-0"
+            } `}
+          >
             {countries?.map(country => (
               <li
                 key={country?.name}
-                className={`p-2 text-sm hover:bg-sky-600 hover:text-white
-            ${country?.name?.toLowerCase() === selected?.toLowerCase() && "bg-sky-600 text-white"}
+                className={`p-2 text-sm hover:bg-black hover:text-white
+            ${country?.name?.toLowerCase() === selected?.toLowerCase() && "bg-black text-white"}
             ${country?.name?.toLowerCase().startsWith(inputValue) ? "block" : "hidden"}`}
                 onClick={() => {
                   if (country?.name?.toLowerCase() !== selected.toLowerCase()) {

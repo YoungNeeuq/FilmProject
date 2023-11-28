@@ -1,5 +1,4 @@
 import { Swiper, SwiperSlide } from "swiper/react"
-
 import "swiper/css"
 import "swiper/css/effect-coverflow"
 import "swiper/css/pagination"
@@ -11,7 +10,7 @@ import { AiOutlineCaretRight } from "react-icons/ai"
 // eslint-disable-next-line react/prop-types
 const BannerMain = ({ search }) => {
   return (
-    <div className="xl:mt-24 lg:mt-24 mt-16 pt-10">
+    <div className="xl:mt-24 lg:mt-24 mt-16 pt-10 ">
       {!search ? (
         <Swiper
           effect={"coverflow"}

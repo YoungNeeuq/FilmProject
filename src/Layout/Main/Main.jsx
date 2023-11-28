@@ -15,14 +15,14 @@ const Main = () => {
   return (
     <div className="bg-black">
       <NavigationMain
-        className="z-10"
+        className=" z-50"
         language={language}
         onLanguageChange={handlelaguage}
         search={search}
         handlesearch={handlesearch}
       ></NavigationMain>
       <BannerMain search={search} handlesearch={handlesearch}></BannerMain>
-      <ContentMain className="mt-20"></ContentMain>
+      <ContentMain className="mt-20 z-0"></ContentMain>
       <Footer language={"English"}></Footer>
     </div>
   )
