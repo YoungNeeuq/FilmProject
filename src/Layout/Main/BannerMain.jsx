@@ -6,11 +6,35 @@ import "swiper/css/navigation"
 import "./Main.css" // import CSS file
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules"
 import { AiOutlineCaretRight } from "react-icons/ai"
+import { useState, useEffect } from "react"
 
 // eslint-disable-next-line react/prop-types
 const BannerMain = ({ search }) => {
+  const [spaceBetween, setSpaceBetween] = useState(100)
+
+  useEffect(() => {
+    const handleResize = () => {
+      // Kiểm tra kích thước màn hình và thiết lập giá trị spaceBetween tương ứng
+      if (window.innerWidth >= 768) {
+        setSpaceBetween(100) // spaceBetween cho PC
+      } else {
+        setSpaceBetween(30) // spaceBetween cho mobile
+      }
+    }
+
+    // Thiết lập giá trị ban đầu khi component được mount
+    handleResize()
+
+    // Thêm sự kiện lắng nghe thay đổi kích thước màn hình
+    window.addEventListener("resize", handleResize)
+
+    // Cleanup khi component bị unmount
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
   return (
-    <div className="xl:mt-24 lg:mt-24 mt-16 pt-10 ">
+    <div className="xl:mt-12 lg:mt-12 mt-0 lg:pt-5 pt-2">
       {!search ? (
         <Swiper
           effect={"coverflow"}
@@ -20,7 +44,7 @@ const BannerMain = ({ search }) => {
           loop={true}
           slidesPerView={"auto"}
           cubeEffect={true}
-          spaceBetween={100}
+          spaceBetween={spaceBetween}
           coverflowEffect={{
             rotate: 0,
             stretch: 0,
@@ -38,8 +62,8 @@ const BannerMain = ({ search }) => {
           breakpoints={{
             // Custom breakpoints here
             640: {
-              slidesPerView: 3,
-              spaceBetween: -100
+              slidesPerView: 8,
+              spaceBetween: 0
             },
             768: {
               slidesPerView: 3,
@@ -50,41 +74,65 @@ const BannerMain = ({ search }) => {
             }
           }}
         >
-          <SwiperSlide>
-            <div className=" w-fit">
-              <img className="shadow-lg" src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
-              {/* <div className="-z- absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#772462] rounded-lg blur-lg opacity-95 w-[102%] lg:-top-2 lg:h-[100%] h-[100%] top-2 mx-auto"></div> */}
-            </div>
+          <SwiperSlide className=" w-2/5 best xl:pt-10 pt-4">
+            <img className="shadow-lg lg:w-full" src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+            <div className="-z-10 absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#E4C79F] rounded-4xl blur-2xl opacity-40 w-[100%] lg:top-10 lg:h-[85%] h-[100%] top-2 mx-auto"></div>
           </SwiperSlide>
-          <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/avatar.png" alt="slide_image" />
+          <SwiperSlide className=" w-2/5 best xl:pt-10 pt-4 ">
+            <img src="../../assets/img/mainpage/banner/avatar.png" alt="slide_image" className="lg:w-full" />
+            <div className="-z-10 absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#E4C79F] rounded-4xl blur-2xl opacity-40 w-[100%] lg:top-10 lg:h-[85%] h-[100%] top-2 mx-auto"></div>
           </SwiperSlide>
-          <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/f8.png" alt="slide_image" />
+          <SwiperSlide className="w-2/5 best xl:pt-10 pt-4 ">
+            <img src="../../assets/img/mainpage/banner/f8.png" alt="slide_image" className="lg:w-full" />
+            <div className="-z-10 absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#E4C79F] rounded-4xl blur-2xl opacity-40 w-[100%] lg:top-10 lg:h-[85%] h-[100%] top-2 mx-auto"></div>
           </SwiperSlide>
-          <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/ratched.png" className=" rounded-3xl" alt="slide_image" />
+          <SwiperSlide className="w-2/5 best xl:pt-10 pt-4 ">
+            <img
+              src="../../assets/img/mainpage/banner/ratched.png"
+              className=" lg:rounded-2xl rounded-lg lg:w-full"
+              alt="slide_image"
+            />
+            <div className="-z-10 absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#E4C79F] rounded-4xl blur-2xl opacity-40 w-[100%] lg:top-10 lg:h-[85%] h-[100%] top-2 mx-auto"></div>
           </SwiperSlide>
-          <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/you.png" className=" rounded-3xl" alt="slide_image" />
+          <SwiperSlide className="w-2/5 best xl:pt-10 pt-4 ">
+            <img
+              src="../../assets/img/mainpage/banner/you.png"
+              className=" lg:rounded-2xl rounded-lg lg:w-full"
+              alt="slide_image"
+            />
+            <div className="-z-10 absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#E4C79F] rounded-4xl blur-2xl opacity-40 w-[100%] lg:top-10 lg:h-[85%] h-[100%] top-2 mx-auto"></div>
           </SwiperSlide>
-          <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+          <SwiperSlide className="w-2/5 best xl:pt-10 pt-4 ">
+            <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" className="lg:w-full " />
+            <div className="-z-10 absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#E4C79F] rounded-4xl blur-2xl opacity-40 w-[100%] lg:top-10 lg:h-[85%] h-[100%] top-2 mx-auto"></div>
           </SwiperSlide>
-          <SwiperSlide className="w-fit ">
-            <img src="../../assets/img/mainpage/banner/ratched.png" className=" rounded-3xl" alt="slide_image" />
+          <SwiperSlide className="w-2/5 best xl:pt-10 pt-4 ">
+            <img
+              src="../../assets/img/mainpage/banner/ratched.png"
+              className=" lg:rounded-2xl rounded-lg lg:w-full"
+              alt="slide_image"
+            />
+            <div className="-z-10 absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#E4C79F] rounded-4xl blur-2xl opacity-40 w-[100%] lg:top-10 lg:h-[85%] h-[100%] top-2 mx-auto"></div>
           </SwiperSlide>
-          <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/you.png" className=" rounded-3xl" alt="slide_image" />
+          <SwiperSlide className="w-2/5 best xl:pt-10 pt-4 ">
+            <img
+              src="../../assets/img/mainpage/banner/you.png"
+              className=" lg:rounded-2xl rounded-lg lg:w-full"
+              alt="slide_image"
+            />
+            <div className="-z-10 absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#E4C79F] rounded-4xl blur-2xl opacity-40 w-[100%] lg:top-10 lg:h-[85%] h-[100%] top-2 mx-auto"></div>
           </SwiperSlide>
-          <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/f8.png" alt="slide_image" />
+          <SwiperSlide className="w-2/5 best xl:pt-10 pt-4 ">
+            <img src="../../assets/img/mainpage/banner/f8.png" alt="slide_image" className="lg:w-full " />
+            <div className="-z-10 absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#E4C79F] rounded-4xl blur-2xl opacity-40 w-[100%] lg:top-10 lg:h-[85%] h-[100%] top-2 mx-auto"></div>
           </SwiperSlide>
-          <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" />
+          <SwiperSlide className="w-2/5 best xl:pt-10 pt-4 ">
+            <img src="../../assets/img/mainpage/banner/old.png" alt="slide_image" className="lg:w-full " />
+            <div className="-z-10 absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#E4C79F] rounded-4xl blur-2xl opacity-40 w-[100%] lg:top-10 lg:h-[85%] h-[100%] top-2 mx-auto"></div>
           </SwiperSlide>
-          <SwiperSlide className="w-fit">
-            <img src="../../assets/img/mainpage/banner/avatar.png" alt="slide_image" />
+          <SwiperSlide className="w-2/5 best xl:pt-10 pt-4 ">
+            <img src="../../assets/img/mainpage/banner/avatar.png" alt="slide_image" className="lg:w-full" />
+            <div className="-z-10 absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#E4C79F] rounded-4xl blur-2xl opacity-40 w-[100%] lg:top-10 lg:h-[85%] h-[100%] top-2 mx-auto"></div>
           </SwiperSlide>
 
           <div className="slider-controler">

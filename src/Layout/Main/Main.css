@@ -93,15 +93,11 @@
 /* .banner-dropdown svg {
   display: none;
 } */
-.banner-dropdown button {
-  border: 0px !important;
-}
+
 .banner-dropdown button span {
   padding: 0px;
 }
-.banner-dropdown button:focus {
-  border: 0px !important;
-}
+
 .banner-button {
   background-color: #3e394d !important;
   color: white;
@@ -274,6 +270,9 @@
   .icon .slick-slider .slick-list .slick-track .slick-slide {
     margin-right: 0px !important;
   }
+  .best {
+    /* margin-left: 20px !important; */
+  }
   .custom-flex {
     display: flex !important;
     gap: 3px;
@@ -326,6 +325,7 @@
     padding-bottom: 30px;
   }
 }
+
 @keyframes slideIn {
   from {
     transform: translateY(100%);
