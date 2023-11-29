@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import "./Main.css" // import CSS file
-import { BsChevronDown } from "react-icons/bs"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
-import { BiHappyAlt, BiSad, BiHappyHeartEyes, BiLaugh } from "react-icons/bi"
 import { faPlay, faForwardStep } from "@fortawesome/free-solid-svg-icons"
+import { Fragment } from "react"
+import { Menu, Transition } from "@headlessui/react"
+import { ChevronDownIcon } from "@heroicons/react/20/solid"
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ")
+}
 ;("use client")
 
-import { Dropdown } from "flowbite-react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 // eslint-disable-next-line react/prop-types
@@ -166,7 +170,7 @@ const ContentMain = () => {
     }
   }
   return (
-    <div className="bg-[#040714] rounded-lg xl:mx-16 lg:mx-12 md:mx-5 mx-3 xl:mt-28 lg:mt-10 mt-3 overflow-hidden ">
+    <div className="bg-[#040714] rounded-lg xl:mx-16 lg:mx-12 md:mx-5 mx-3 xl:mt-8 lg:mt-2 mt-2 overflow-hidden ">
       {/* Start bar */}
       <ScrollAnimation>
         <div
@@ -324,39 +328,169 @@ const ContentMain = () => {
                 Suggest what to see in the evening
               </h1>
               <div className="flex xl:gap-10 gap-2 absolute xl:bottom-20 lg:bottom-20 bottom-3 banner-dropdown ">
-                <Dropdown
-                  label={
-                    <div className="flex xl:gap-2 lg:gap-2 gap-1 bg-[#3E394D] opacity-70 xl:px-6 xl:py-2 px-1 py-0 rounded-lg justify-center text-white border-2 ">
+                <Menu as="div" className="relative inline-block text-left">
+                  <div>
+                    <Menu.Button className="flex xl:gap-2 lg:gap-2 gap-1 bg-[#3E394D] opacity-70 xl:px-6 xl:py-2 px-1 py-0 rounded-lg justify-center text-white border-2">
                       <img className="imgbanner" src="../../assets/img/icon/thinking.png" alt="" />
                       <h3 className="my-auto xl:text-xl lg:text-xl text-[10px]">Mood</h3>
-                      <BsChevronDown className="my-auto"></BsChevronDown>
-                    </div>
-                  }
-                  dismissOnClick={true}
-                  className="banner-button"
-                >
-                  <Dropdown.Item>
-                    <BiHappyAlt size={40}></BiHappyAlt>
-                    <p className="font-bold ml-2">So happy</p>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <BiHappyHeartEyes size={40}></BiHappyHeartEyes>
-                    <p className="font-bold ml-2">So love</p>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <BiSad size={40}></BiSad>
-                    <p className="font-bold ml-2">So love</p>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <BiLaugh size={40}></BiLaugh>
-                    <p className="font-bold ml-2">So laugh</p>
-                  </Dropdown.Item>
-                </Dropdown>
-                <div className="flex xl:gap-2 lg:gap-2 gap-1 bg-[#3E394D] opacity-70 xl:px-6 xl:py-2 px-3 py-0 rounded-lg justify-center text-white border-2 button-banner">
+                      <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400 my-auto" aria-hidden="true" />
+                    </Menu.Button>
+                  </div>
+
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute  z-10 mt-2 w-full  top-[-185px] rounded-md bg-black border  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <div className="py-1">
+                        <Menu.Item className="flex">
+                          {({ active }) => (
+                            <a
+                              href=""
+                              className={classNames(
+                                active ? "bg-gray-100 text-gray-900" : "text-white",
+                                "block px-4 py-2 text-md"
+                              )}
+                            >
+                              So happy
+                            </a>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="#"
+                              className={classNames(
+                                active ? "bg-gray-100 text-gray-900" : "text-white",
+                                "block px-4 py-2 text-md"
+                              )}
+                            >
+                              So sad
+                            </a>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="#"
+                              className={classNames(
+                                active ? "bg-gray-100 text-gray-900" : "text-white",
+                                "block px-4 py-2 text-md"
+                              )}
+                            >
+                              So love
+                            </a>
+                          )}
+                        </Menu.Item>
+                        <form method="POST" action="#">
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                type="submit"
+                                className={classNames(
+                                  active ? "bg-gray-100 text-gray-900" : "text-white",
+                                  "block w-full px-4 py-2 text-left text-md"
+                                )}
+                              >
+                                So so
+                              </button>
+                            )}
+                          </Menu.Item>
+                        </form>
+                      </div>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+
+                <Menu as="div" className="relative inline-block text-left">
+                  <div>
+                    <Menu.Button className="flex xl:gap-2 lg:gap-2 gap-1 bg-[#3E394D] opacity-70 xl:px-6 xl:py-2 px-1 py-0 rounded-lg justify-center text-white border-2">
+                      <img className="imgbanner" src="../../assets/img/icon/friends.png" alt="" />
+                      <h3 className="my-auto xl:text-xl lg:text-xl text-[10px]">With somebody</h3>
+                      <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400 my-auto" aria-hidden="true" />
+                    </Menu.Button>
+                  </div>
+
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute  z-10 mt-2  top-[-185px] rounded-md bg-black border w-full shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <div className="py-1">
+                        <Menu.Item className="flex">
+                          {({ active }) => (
+                            <a
+                              href=""
+                              className={classNames(
+                                active ? "bg-gray-100 text-gray-900" : "text-white",
+                                "block px-4 py-2 text-md "
+                              )}
+                            >
+                              With friend
+                            </a>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="#"
+                              className={classNames(
+                                active ? "bg-gray-100 text-gray-900" : "text-white",
+                                "block px-4 py-2 text-md "
+                              )}
+                            >
+                              With family
+                            </a>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="#"
+                              className={classNames(
+                                active ? "bg-gray-100 text-gray-900" : "text-white",
+                                "block px-4 py-2 text-md "
+                              )}
+                            >
+                              With homie
+                            </a>
+                          )}
+                        </Menu.Item>
+                        <form method="POST" action="#">
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                type="submit"
+                                className={classNames(
+                                  active ? "bg-gray-100 text-gray-900" : "text-white",
+                                  "block w-full px-4 py-2 text-left text-md "
+                                )}
+                              >
+                                With lover
+                              </button>
+                            )}
+                          </Menu.Item>
+                        </form>
+                      </div>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+
+                {/* <div className="flex xl:gap-2 lg:gap-2 gap-1 bg-[#3E394D] opacity-70 xl:px-6 xl:py-2 px-3 py-0 rounded-lg justify-center text-white border-2 button-banner">
                   <img className="imgbanner" src="../../assets/img/icon/friends.png" alt="" />
                   <h3 className="my-auto xl:text-xl lg:text-xl text-[10px]">With somebody</h3>
                   <BsChevronDown className="my-auto"></BsChevronDown>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className=" basis-2/5 grid grid-cols-2 z-0 xl:gap-7 gap-2 lg:gap-3 relative banner ">
