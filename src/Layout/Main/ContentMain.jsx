@@ -16,6 +16,7 @@ function classNames(...classes) {
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
+import { NavLink } from "react-router-dom"
 // eslint-disable-next-line react/prop-types
 const ScrollAnimation = ({ children }) => {
   const [ref, inView] = useInView({
@@ -330,10 +331,13 @@ const ContentMain = () => {
               <div className="flex xl:gap-10 gap-2 absolute xl:bottom-20 lg:bottom-20 bottom-3 banner-dropdown ">
                 <Menu as="div" className="relative inline-block text-left">
                   <div>
-                    <Menu.Button className="flex xl:gap-2 lg:gap-2 gap-1 bg-[#3E394D] opacity-70 xl:px-6 xl:py-2 px-1 py-0 rounded-lg justify-center text-white border-2">
+                    <Menu.Button className="flex xl:gap-2 lg:gap-2 gap-1 bg-[#3E394D] opacity-70 xl:px-6 xl:py-2 px-[1px] py-[1px] xl:rounded-lg rounded-md justify-center text-white xl:border-2 border">
                       <img className="imgbanner" src="../../assets/img/icon/thinking.png" alt="" />
                       <h3 className="my-auto xl:text-xl lg:text-xl text-[10px]">Mood</h3>
-                      <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400 my-auto" aria-hidden="true" />
+                      <ChevronDownIcon
+                        className="xl:-mr-1 xl:h-5 xl:w-5 w-3 text-gray-400 my-auto"
+                        aria-hidden="true"
+                      />
                     </Menu.Button>
                   </div>
 
@@ -409,10 +413,13 @@ const ContentMain = () => {
 
                 <Menu as="div" className="relative inline-block text-left">
                   <div>
-                    <Menu.Button className="flex xl:gap-2 lg:gap-2 gap-1 bg-[#3E394D] opacity-70 xl:px-6 xl:py-2 px-1 py-0 rounded-lg justify-center text-white border-2">
+                    <Menu.Button className="flex xl:gap-2 lg:gap-2 gap-1 bg-[#3E394D] opacity-70 xl:px-6 xl:py-2 px-[1px] py-[1px] xl:rounded-lg rounded-md justify-center text-white xl:border-2 border">
                       <img className="imgbanner" src="../../assets/img/icon/friends.png" alt="" />
-                      <h3 className="my-auto xl:text-xl lg:text-xl text-[10px]">With somebody</h3>
-                      <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400 my-auto" aria-hidden="true" />
+                      <h3 className="my-auto xl:text-xl lg:text-xl text-[8px]">With somebody</h3>
+                      <ChevronDownIcon
+                        className="xl:-mr-1 xl:h-5 xl:w-5 w-3 text-gray-400 my-auto"
+                        aria-hidden="true"
+                      />
                     </Menu.Button>
                   </div>
 
@@ -582,12 +589,15 @@ const ContentMain = () => {
       </ScrollAnimation>
       {/* End weekly top */}
       <ScrollAnimation>
-        <div className=" flex gap-2  image-container relative xl:mx-20 mx-3 xl:max-w-full max-w-[113px]">
+        <NavLink
+          className=" flex gap-2  image-container relative xl:mx-20 mx-3 xl:max-w-full max-w-[113px]"
+          to="/behance"
+        >
           <img className="z-10" src="../../assets/img/mainpage/1.png" alt="" />
           <img className="z-10" src="../../assets/img/mainpage/2.png" alt="" />
           <img className="z-10" src="../../assets/img/mainpage/3.png" alt="" />
           <div className="absolute -inset-7 bg-gradient-to-r from-[#4c6aa7] to-[#772462] rounded-lg blur-xl opacity-95 xl:w-[100%] w-[100%] lg:w-[100%]  xl:h-[84%] lg:h-[84%] h-[75%] xl:top-[9%] top-[10%] left-0 mx-auto"></div>
-        </div>
+        </NavLink>
       </ScrollAnimation>
     </div>
   )
