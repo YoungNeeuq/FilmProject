@@ -21,7 +21,7 @@ const Behance = () => {
         search={search}
         handlesearch={handlesearch}
       ></NavigationMain>
-      <BannerBehance search={search} handlesearch={handlesearch}></BannerBehance>
+      <BannerBehance search={search} handlesearch={handlesearch} className="z-0"></BannerBehance>
       <ContentBahance className="mt-10 z-0"></ContentBahance>
       <Footer language={"English"}></Footer>
     </div>

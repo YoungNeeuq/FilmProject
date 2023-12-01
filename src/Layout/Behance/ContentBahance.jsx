@@ -48,7 +48,7 @@ const ContentBahance = () => {
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 4.5
+      items: 2.5
     }
   }
   useEffect(() => {
@@ -77,28 +77,30 @@ const ContentBahance = () => {
   return (
     <ScrollAnimation>
       <div
-        className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 mt-10 py-4 bg-[#0e0e14] xl:rounded-2xl"
+        className="xl:ml-20 lg:ml-10 md:ml-8 carousel-wrapper xl:mb-20 lg:mb-16 md:mb-12 xl:mx-10 lg:mx-8 md:mx-6 sm:mx-4 mx-2 py-4 bg-[#0e0e14] xl:rounded-2xl "
         draggable="true"
       >
-        <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-4 lg:mb-3 md:mb-2 mb-2">
-          Resembing
-        </h4>
-        <Carousel showDots={true} responsive={responsive}>
-          {resemblings.map(resembling => (
-            <div
-              className=" before: self-center hover:scale-110 transition-transform z-10 relative group xl:mx-4 mx-1"
-              key={resembling.id}
-            >
-              <img src={resembling.image} className=" rounded-lg w-full h-full " alt={`movie-${resembling.id}`} />
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white opacity-0 group-hover:opacity-100">
-                <div className="animate-slideIn mb-2 font-bold xl:text-base lg:text-base text-[8px]">
-                  {resembling.title}
+        <div className="xl:ml-5">
+          <h4 className="text-white xl:text-4xl lg:text-3xl md:text-3xl text-xl font-bold xl:mb-4 lg:mb-3 md:mb-2 mb-2 xl:mx-4">
+            Resembing
+          </h4>
+          <Carousel showDots={true} responsive={responsive}>
+            {resemblings.map(resembling => (
+              <div
+                className=" before: self-center hover:scale-110 transition-transform z-10 relative group xl:mx-4 mx-1"
+                key={resembling.id}
+              >
+                <img src={resembling.image} className=" rounded-lg w-full h-full " alt={`movie-${resembling.id}`} />
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white opacity-0 group-hover:opacity-100">
+                  <div className="animate-slideIn mb-2 font-bold xl:text-base lg:text-base text-[8px]">
+                    {resembling.title}
+                  </div>
+                  <div className="animate-slideIn xl:text-base lg:text-base text-[6px]">{resembling.time}</div>
                 </div>
-                <div className="animate-slideIn xl:text-base lg:text-base text-[6px]">{resembling.time}</div>
               </div>
-            </div>
-          ))}
-        </Carousel>
+            ))}
+          </Carousel>
+        </div>
       </div>
     </ScrollAnimation>
   )
