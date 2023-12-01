@@ -123,7 +123,7 @@ const Navigation = ({ language, onLanguageChange, search, handlesearch }) => {
             </div>
 
             <ul
-              className={`bg-white rounded-md mt-2 overflow-y-auto  absolute  ${open ? "max-h-60" : "max-h-0"} ${
+              className={`bg-white rounded-md mt-2 overflow-y-auto z-100  absolute  ${open ? "max-h-60" : "max-h-0"} ${
                 open ? "max-w-60" : "max-w-0"
               } ${open ? "border" : "border-0"}
             ${flat ? "w-full" : ""} `}
@@ -168,7 +168,8 @@ const Navigation = ({ language, onLanguageChange, search, handlesearch }) => {
                     <img className="lg:w-[4%] xl:w-[3%] " src="../../assets/img/icon/search.png" alt="Search Icon" />
                     <input
                       type="text"
-                      className="border-none border-black rounded-md p-2 bg-black lg:w-[760px] text-lg text-gray-300 ml-2 focus:outline-none px-5"
+                      className="border-none border-black rounded-md p-2 bg-black lg:w-[760px]
+                      text-lg text-gray-300 ml-2 focus:outline-none px-5"
                       placeholder="Movie/series name or actor/director name"
                     />
                     <div className="cursor-pointer" onClick={collapseSearch}>

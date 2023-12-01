@@ -32,3 +32,27 @@
 .heart.is-flashing {
   animation: flash 2s 1;
 }
+.number-container {
+  display: flex;
+}
+
+.number-container span {
+  cursor: pointer;
+}
+
+.number-container span.active {
+}
+
+.button-container {
+  display: flex;
+}
+
+.button-container button {
+  display: none;
+  color: black;
+}
+
+.button-container button.active {
+  display: flex;
+  color: white;
+}

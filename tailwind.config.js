@@ -27,6 +27,9 @@ export default {
       },
       dropShadow: {
         xl: "0px 0px 5px linear-gradient( to right, #ffffff , #fffacc)"
+      },
+      backgroundImage: {
+        hero: "url('../../assets/img/behance/banner.png')"
       }
     },
     root: {
